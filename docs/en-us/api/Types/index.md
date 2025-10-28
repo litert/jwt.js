@@ -4,9 +4,13 @@
 
 ## Interfaces
 
-- [IJwtDecodeResult](interfaces/IJwtDecodeResult.md)
+- [IJwaSigner](interfaces/IJwaSigner.md)
+- [IJwtAsyncValidator](interfaces/IJwtAsyncValidator.md)
 - [IJwtHeader](interfaces/IJwtHeader.md)
 - [IJwtParseResult](interfaces/IJwtParseResult.md)
 - [IJwtPayload](interfaces/IJwtPayload.md)
-- [IJwtSigner](interfaces/IJwtSigner.md)
 - [IJwtValidator](interfaces/IJwtValidator.md)
+
+## Type Aliases
+
+- [IJwtHeaderInput](type-aliases/IJwtHeaderInput.md)

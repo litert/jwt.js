@@ -15,15 +15,7 @@
  */
 
 import type * as dL from '../Types';
-import type * as uT from '@litert/utils-ts-types';
 import * as eL from '../Errors';
-import * as cL from '../Constants';
-
-const VALID_ALG = Object.values(cL.ESigningJwa).reduce((acc, alg) => {
-    acc[alg] = true;
-    return acc;
-// eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
-}, {} as uT.IDict<boolean>);
 
 /**
  * The function to decode a JWT string into its components.
@@ -33,31 +25,41 @@ const VALID_ALG = Object.values(cL.ESigningJwa).reduce((acc, alg) => {
  * other operations like validating the JWT token claims, verifying the signature,
  *
  * The only validation it will do is to check the basic format of the JWT string,
- * and the `typ` and `alg` claims in the header if they are present.
+ * and the `typ` claim in the header if they are present.
  *
  * @param jwt   The JWT string to parse.
  *
  * @returns    The parsed JWT components.
+ *
+ * @example
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const info = LibJWT.parse(token); // Signature is not verified here.
+ * console.log(info.header);
+ * console.log(info.payload);
+ * const verifier = new LibJWT.RsaJwaVerifier({
+ *    publicKey: '-----BEGIN PUBLIC KEY-----\n...',
+ *    digestType: LibJWT.EDigestType.SHA256,
+ * });
+ * if (!verifier.verify(info)) {
+ *    throw new Error('Invalid signature.');
+ * }
+ * ```
  */
 export function parse(jwt: string): dL.IJwtParseResult {
 
-    const [headerB64, payloadB64, sigB64] = jwt.split('.');
+    const [headerB64, payloadB64, sigB64, ...others] = jwt.split('.');
 
-    if (!headerB64 || !payloadB64 || !sigB64) {
+    if (!headerB64 || !payloadB64 || !sigB64 || others.length) {
 
-        throw new eL.E_INVALID_JWT(eL.EErrorCode.INVALID_FORMAT);
+        throw new eL.E_VERIFY_FAILED(eL.EErrorCode.INVALID_FORMAT);
     }
 
     const header = parseJsonFromBase64url<dL.IJwtHeader>(headerB64);
 
     if ((header?.typ ?? 'JWT') !== 'JWT') {
 
-        throw new eL.E_INVALID_JWT(eL.EErrorCode.INVALID_TYP_HEADER);
-    }
-
-    if (!VALID_ALG[header.alg ?? 'ES256']) {
-
-        throw new eL.E_INVALID_JWT(eL.EErrorCode.INVALID_ALG_HEADER);
+        throw new eL.E_VERIFY_FAILED(eL.EErrorCode.INVALID_TYP_HEADER);
     }
 
     return {
@@ -76,13 +78,13 @@ function parseJsonFromBase64url<T>(jsonBase64url: string): T {
 
         if (typeof ret !== 'object' || ret === null || Array.isArray(ret)) {
 
-            throw new eL.E_INVALID_JWT(eL.EErrorCode.INVALID_FORMAT);
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.INVALID_FORMAT);
         }
 
         return ret;
     }
     catch {
 
-        throw new eL.E_INVALID_JWT(eL.EErrorCode.INVALID_FORMAT);
+        throw new eL.E_VERIFY_FAILED(eL.EErrorCode.INVALID_FORMAT);
     }
 }

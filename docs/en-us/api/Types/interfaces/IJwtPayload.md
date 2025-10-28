@@ -2,7 +2,7 @@
 
 # Interface: IJwtPayload
 
-Defined in: src/lib/Types.ts:226
+Defined in: [src/lib/Types.ts:231](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L231)
 
 The structure of JWT Payload.
 
@@ -18,7 +18,7 @@ Other claims.
 
 > `optional` **aud**: `string` \| `string`[]
 
-Defined in: src/lib/Types.ts:273
+Defined in: [src/lib/Types.ts:278](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L278)
 
 The "aud" (audience) claim identifies the recipients that the JWT is
 intended for.  Each principal intended to process the JWT MUST
@@ -32,7 +32,7 @@ single case-sensitive string containing a StringOrURI value.  The
 interpretation of audience values is generally application specific.
 Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
 
@@ -44,7 +44,7 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
 
 > `optional` **exp**: `number`
 
-Defined in: src/lib/Types.ts:317
+Defined in: [src/lib/Types.ts:322](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L322)
 
 The "exp" (expiration time) claim identifies the expiration time on
 or after which the JWT MUST NOT be accepted for processing.  The
@@ -54,7 +54,7 @@ Implementers MAY provide for some small leeway, usually no more than
 a few minutes, to account for clock skew.  Its value MUST be a number
 containing a NumericDate value.  Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4
 
@@ -74,14 +74,14 @@ seconds
 
 > `optional` **iat**: `number`
 
-Defined in: src/lib/Types.ts:300
+Defined in: [src/lib/Types.ts:305](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L305)
 
 The "iat" (issued at) claim identifies the time at which the JWT was
 issued.  This claim can be used to determine the age of the JWT.  Its
 value MUST be a number containing a NumericDate value.  Use of this
 claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.6
 
@@ -97,14 +97,14 @@ seconds
 
 > `optional` **iss**: `string`
 
-Defined in: src/lib/Types.ts:254
+Defined in: [src/lib/Types.ts:259](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L259)
 
 The "iss" (issuer) claim identifies the principal that issued the
 JWT.  The processing of this claim is generally application specific.
 The "iss" value is a case-sensitive string containing a StringOrURI
 value.  Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
 
@@ -116,7 +116,7 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
 
 > `optional` **jti**: `string`
 
-Defined in: src/lib/Types.ts:242
+Defined in: [src/lib/Types.ts:247](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L247)
 
 The "jti" (JWT ID) claim provides a unique identifier for the JWT.
 The identifier value MUST be assigned in a manner that ensures that
@@ -127,7 +127,7 @@ produced by different issuers as well.  The "jti" claim can be used
 to prevent the JWT from being replayed.  The "jti" value is a case-
 sensitive string.  Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.7
 
@@ -141,7 +141,7 @@ if you need to prevent replay or control its usage and validity by extra ways
 
 > `optional` **nbf**: `number`
 
-Defined in: src/lib/Types.ts:333
+Defined in: [src/lib/Types.ts:338](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L338)
 
 The "nbf" (not before) claim identifies the time before which the JWT
 MUST NOT be accepted for processing.  The processing of the "nbf"
@@ -151,7 +151,7 @@ provide for some small leeway, usually no more than a few minutes, to
 account for clock skew.  Its value MUST be a number containing a
 NumericDate value.  Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5
 
@@ -167,7 +167,7 @@ seconds
 
 > `optional` **sub**: `string`
 
-Defined in: src/lib/Types.ts:287
+Defined in: [src/lib/Types.ts:292](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L292)
 
 The "sub" (subject) claim identifies the principal that is the
 subject of the JWT.  The claims in a JWT are normally statements
@@ -177,7 +177,7 @@ The processing of this claim is generally application specific.  The
 "sub" value is a case-sensitive string containing a StringOrURI
 value.  Use of this claim is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2
 

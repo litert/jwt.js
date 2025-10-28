@@ -1,7 +1,23 @@
+/**
+ * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import * as LibJwt from '../lib';
 import * as NodeFS from 'node:fs';
 
-const KEY_DIR = `${__dirname}/../debug`;
+const KEY_DIR = `${__dirname}/../test-data`;
 
 for (const k of [
     'ed25519',
@@ -31,7 +47,7 @@ for (const k of [
 
     for (const okKey of okPrivKeyFiles) {
 
-        const signer = new LibJwt.EddsaJwtSigner({
+        const signer = new LibJwt.EddsaJwaSigner({
             privateKey: NodeFS.readFileSync(`${KEY_DIR}/${okKey}`, 'utf-8'),
             keyId: okKeyId,
         });
@@ -53,38 +69,39 @@ for (const k of [
             ...okPubKeyFiles,
         ]) {
 
-            const okVerifier = new LibJwt.EddsaJwtVerifier({
+            const okVerifier = new LibJwt.EddsaJwaVerifier({
                 publicKey: NodeFS.readFileSync(`${KEY_DIR}/${okPub}`, 'utf-8'),
             });
 
-            if (okVerifier.validate(LibJwt.parse(token))) {
+            try {
+
+                okVerifier.validate(LibJwt.parse(token));
 
                 console.info(`${okKey} * ${okPub} should passed => OK`);
             }
-            else {
+            catch {
 
                 console.error(`${okKey} * ${okPub} should passed => FAILED`);
             }
+        }
 
-            const errVerifiers = [
-                ...errPrivKeyFiles,
-                ...errPubKeyFiles,
-            ];
+        for (const errPub of [
+            ...errPrivKeyFiles,
+            ...errPubKeyFiles,
+        ]) {
 
-            for (const errPub of errVerifiers) {
+            const errVerifier = new LibJwt.EddsaJwaVerifier({
+                publicKey: NodeFS.readFileSync(`${KEY_DIR}/${errPub}`, 'utf-8'),
+            });
 
-                const errVerifier = new LibJwt.EddsaJwtVerifier({
-                    publicKey: NodeFS.readFileSync(`${KEY_DIR}/${errPub}`, 'utf-8'),
-                });
+            try {
 
-                if (!errVerifier.validate(LibJwt.parse(token))) {
+                errVerifier.validate(LibJwt.parse(token));
+                console.info(`${okKey} * ${errPub} should failed => FAILED`);
+            }
+            catch {
 
-                    console.error(`${okKey} * ${errPub} should failed => OK`);
-                }
-                else {
-
-                    console.info(`${okKey} * ${errPub} should failed => FAILED`);
-                }
+                console.error(`${okKey} * ${errPub} should failed => OK`);
             }
         }
     }

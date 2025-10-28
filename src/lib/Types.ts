@@ -40,7 +40,7 @@ export interface IJwtHeader {
      * by JWA; the initial contents of this registry are the values
      * defined in Section 3.1 of JWA.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
      * @required
      */
     'alg': `${'HS' | 'RS' | 'PS' | 'ES'}${'256' | '384' | '512'}` | 'EdDSA' | 'ES256K';
@@ -61,7 +61,7 @@ export interface IJwtHeader {
      * always be spelled using uppercase characters for compatibility with
      * legacy implementations.  Use of this Header Parameter is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
      * @recommended
      * @optional
      */
@@ -79,7 +79,7 @@ export interface IJwtHeader {
      * Section 8 on TLS requirements.  Use of this Header Parameter is
      * OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
      * @optional
      */
     'jku'?: string;
@@ -90,7 +90,7 @@ export interface IJwtHeader {
      * represented as a JSON Web Key [JWK].  Use of this Header Parameter is
      * OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
      * @optional
      */
     'jwk'?: string;
@@ -100,7 +100,7 @@ export interface IJwtHeader {
      * is used by this specification to convey structural information about
      * the JWT.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-5.2
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-5.2
      * @optional
      */
     'cty'?: 'JWT';
@@ -113,7 +113,7 @@ export interface IJwtHeader {
      * are also sometimes known as certificate fingerprints.  Use of this
      * Header Parameter is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
      * @optional
      */
     'x5t'?: string;
@@ -126,7 +126,7 @@ export interface IJwtHeader {
      * thumbprints are also sometimes known as certificate fingerprints.
      * Use of this Header Parameter is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
      * @optional
      */
     ['x5t#S256']?: string;
@@ -147,7 +147,7 @@ export interface IJwtHeader {
      * the certificate or certificate chain to be invalid if any validation
      * failure occurs.  Use of this Header Parameter is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
      * @optional
      */
     'x5c'?: string[];
@@ -170,7 +170,7 @@ export interface IJwtHeader {
      * Also, see Section 8 on TLS requirements.  Use of this Header
      * Parameter is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5
      * @optional
      */
     'x5u'?: string;
@@ -185,7 +185,7 @@ export interface IJwtHeader {
      * When used with a JWK, the "kid" value is used to match a JWK "kid"
      * parameter value.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
      * @optional
      */
     'kid'?: string;
@@ -209,7 +209,7 @@ export interface IJwtHeader {
      * Protected Header.  Use of this Header Parameter is OPTIONAL.  This
      * Header Parameter MUST be understood and processed by implementations.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
      * @optional
      */
     'crit'?: string[];
@@ -219,6 +219,11 @@ export interface IJwtHeader {
      */
     [key: string]: uT.IJsonSafeValue | undefined;
 }
+
+/**
+ * The input structure of JWT Header for API accepting user-provided headers.
+ */
+export type IJwtHeaderInput = Partial<IJwtHeader>;
 
 /**
  * The structure of JWT Payload.
@@ -235,7 +240,7 @@ export interface IJwtPayload {
      * to prevent the JWT from being replayed.  The "jti" value is a case-
      * sensitive string.  Use of this claim is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.7
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.7
      * @type string
      * @recommended if you need to prevent replay or control its usage and validity by extra ways
      */
@@ -248,7 +253,7 @@ export interface IJwtPayload {
      * value.  Use of this claim is OPTIONAL.
      *
      * @type string
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
      * @optional
      */
     'iss'?: string;
@@ -267,7 +272,7 @@ export interface IJwtPayload {
      * Use of this claim is OPTIONAL.
      *
      * @type string | string[]
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
      * @optional
      */
     'aud'?: string | string[];
@@ -281,7 +286,7 @@ export interface IJwtPayload {
      * "sub" value is a case-sensitive string containing a StringOrURI
      * value.  Use of this claim is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2
      * @optional
      */
     'sub'?: string;
@@ -292,7 +297,7 @@ export interface IJwtPayload {
      * value MUST be a number containing a NumericDate value.  Use of this
      * claim is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.6
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.6
      * @optional
      * @type uint32 (unix timestamp)
      * @unit seconds
@@ -308,7 +313,7 @@ export interface IJwtPayload {
      * a few minutes, to account for clock skew.  Its value MUST be a number
      * containing a NumericDate value.  Use of this claim is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4
      * @optional
      * @recommended Any token should have an expiration date.
      * @type uint32 (unix timestamp)
@@ -325,7 +330,7 @@ export interface IJwtPayload {
      * account for clock skew.  Its value MUST be a number containing a
      * NumericDate value.  Use of this claim is OPTIONAL.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5
      * @optional
      * @type uint32 (unix timestamp)
      * @unit seconds
@@ -339,35 +344,9 @@ export interface IJwtPayload {
 }
 
 /**
- * The result of decoding a JWT token, could be passed to `verify()` to verify the JWT.
- */
-export interface IJwtDecodeResult {
-
-    /**
-     * The decoded header of the JWT.
-     */
-    'header': IJwtHeader;
-
-    /**
-     * The decoded payload of the JWT.
-     */
-    'payload': IJwtPayload;
-
-    /**
-     * The content to be signed, which is the base64url-encoded header and payload.
-     */
-    'signPayload': string;
-
-    /**
-     * The signature of the JWT.
-     */
-    'sig': Buffer;
-}
-
-/**
  * The type of the signer objects used in `stringify` API, to sign the JWTs.
  */
-export interface IJwtSigner {
+export interface IJwaSigner {
     /**
      * The signing algorithm family.
      */
@@ -384,13 +363,18 @@ export interface IJwtSigner {
     readonly jwa: cL.ESigningJwa;
 
     /**
+     * The digest type to use for signing.
+     */
+    readonly digestType: cL.EDigestType;
+
+    /**
      * Sign the provided data and return the signature.
      *
      * @param data   The data to sign.
      *
      * @returns  The signature.
      */
-    sign(data: Buffer): Buffer;
+    sign(data: Buffer | string): Buffer;
 }
 
 /**
@@ -428,11 +412,39 @@ export interface IJwtParseResult {
 export interface IJwtValidator {
 
     /**
+     * The name of the validator.
+     *
+     * When using with the JwtVerifier class, this name can be used to identify
+     * which validator failed.
+     */
+    readonly name: string;
+
+    /**
      * Validate the provided parse result of a JWT, checking if the JWT is valid.
      *
      * @param parseResult  The result returned by `parse` API.
      *
-     * @returns  Whether the JWT passed the validation.
+     * @throws  If validation failed or an error occurred inside.
      */
-    validate(parseResult: IJwtParseResult): boolean;
+    validate(parseResult: IJwtParseResult): void;
+}
+
+/**
+ * The type of the asynchronous validator objects that validate the JWTs, after parsing.
+ *
+ * The validator is not only verifying the signature, but also could do other
+ * checks on the payload, such as expiration, audience, issuer, etc.
+ */
+export interface IJwtAsyncValidator {
+
+    readonly name: string;
+
+    /**
+     * Validate the provided parse result of a JWT, checking if the JWT is valid.
+     *
+     * @param parseResult  The result returned by `parse` API.
+     *
+     * @throws  If validation failed or an error occurred inside.
+     */
+    validate(parseResult: IJwtParseResult): Promise<void>;
 }

@@ -15,6 +15,157 @@
  */
 
 /**
+ * The header claims defined by the JWT specification.
+ *
+ * @link https://datatracker.ietf.org/doc/html/rfc7519#section-5
+ */
+export enum EStdHeaderClaim {
+
+    /**
+     * The algorithm used for signing the JWT.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
+     */
+    ALGORITHM = 'alg',
+
+    /**
+     * The type of the token.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
+     */
+    TYPE = 'typ',
+
+    /**
+     * The content type of the JWT payload.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.10
+     */
+    CONTENT_TYPE = 'cty',
+
+    /**
+     * The key ID used to sign the JWT.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
+     */
+    KEY_ID = 'kid',
+
+    /**
+     * The URL of the JSON Web Key Set (JWKS) document that contains the
+     * public key used to verify the JWT signature.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
+     */
+    JWK_URL = 'jku',
+
+    /**
+     * The JSON Web Key (JWK) that contains the public key used to verify
+     * the JWT signature.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
+     */
+    JWK = 'jwk',
+
+    /**
+     * The X.509 URL pointing to the certificate or certificate chain
+     * used to verify the JWT signature.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5
+     */
+    X509_CERT_URL = 'x5u',
+
+    /**
+     * The X.509 certificate chain used to verify the JWT signature.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
+     */
+    X509_CERT_CHAIN = 'x5c',
+
+    /**
+     * The X.509 certificate thumbprint. (SHA-1 hash of the DER-encoded
+     * certificate)
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
+     */
+    X509_CERT_THUMBPRINT_SHA1 = 'x5t',
+
+    /**
+     * The X.509 certificate SHA-256 thumbprint. (SHA-256 hash of the DER-encoded
+     * certificate)
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
+     */
+    X509_CERT_THUMBPRINT_SHA256 = 'x5t#S256',
+
+    /**
+     * Indicates that the header contains critical claims that must be
+     * understood and processed.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
+     */
+    CRITICAL_CLAIMS = 'crit',
+}
+
+export const STANDARD_HEADER_CLAIMS = Object.values(EStdHeaderClaim) as readonly string[];
+
+/**
+ * The payload claims defined by the JWT specification.
+ *
+ * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
+ */
+export enum EStdPayloadClaim {
+
+    /**
+     * The issuer of the JWT.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
+     */
+    ISSUER = 'iss',
+
+    /**
+     * The subject of the JWT.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2
+     */
+    SUBJECT = 'sub',
+
+    /**
+     * The audience for which the JWT is intended.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
+     */
+    AUDIENCE = 'aud',
+
+    /**
+     * The expiration time of the JWT (as a Unix timestamp).
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4
+     */
+    EXPIRATION_TIME = 'exp',
+
+    /**
+     * The time before which the JWT must not be accepted for processing
+     * (as a Unix timestamp).
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5
+     */
+    NOT_BEFORE = 'nbf',
+
+    /**
+     * The time at which the JWT was issued (as a Unix timestamp).
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.6
+     */
+    ISSUED_AT = 'iat',
+
+    /**
+     * The unique identifier for the JWT.
+     *
+     * @link https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.7
+     */
+    JWT_ID = 'jti',
+}
+
+/**
  * The families of the signing algorithms supported by the library.
  */
 export enum ESigningAlgoFamily {
@@ -22,35 +173,35 @@ export enum ESigningAlgoFamily {
     /**
      * Use the RSA algorithm for signing.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7518#section-3.3
-     * @see https://datatracker.ietf.org/doc/html/rfc7518#section-3.5
+     * @link https://datatracker.ietf.org/doc/html/rfc7518#section-3.3
+     * @link https://datatracker.ietf.org/doc/html/rfc7518#section-3.5
      */
     RSA,
 
     /**
      * Use the HMAC-SHA2 algorithm for signing.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7518#section-3.2
+     * @link https://datatracker.ietf.org/doc/html/rfc7518#section-3.2
      */
     HMAC,
 
     /**
      * Use the ECDSA algorithm for signing.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc7518#section-3.4
+     * @link https://datatracker.ietf.org/doc/html/rfc7518#section-3.4
      */
     ECDSA,
 
     /**
      * Use the EdDSA algorithm for signing.
      *
-     * @see https://datatracker.ietf.org/doc/html/rfc8037#section-3.1
-     * @see https://datatracker.ietf.org/doc/html/rfc8037#appendix-A.4
+     * @link https://datatracker.ietf.org/doc/html/rfc8037#section-3.1
+     * @link https://datatracker.ietf.org/doc/html/rfc8037#appendix-A.4
      */
     EDDSA,
 
     /**
-     * @see https://datatracker.ietf.org/doc/html/draft-chen-sm2-sm3-algorithms-04#section-3.1.1
+     * @link https://datatracker.ietf.org/doc/html/draft-chen-sm2-sm3-algorithms-04#section-3.1.1
      *
      * @todo Not implemented yet.
      */
@@ -58,7 +209,7 @@ export enum ESigningAlgoFamily {
 }
 
 /**
- * The JWA algorithms for signing JWTs, using in the `alg` field.
+ * The JWA algorithms for signing JWTs, using in the `alg` claim.
  */
 export enum ESigningJwa {
 
@@ -135,6 +286,14 @@ export enum ESigningJwa {
      * `Ed25519`, `Ed448`.
      */
     EDDSA = 'EdDSA',
+
+    /**
+     * SM2 signature algorithm with SM3 hash algorithm.
+     *
+     * @link https://datatracker.ietf.org/doc/html/draft-chen-sm2-sm3-algorithms-04#section-3.1.1
+     * @todo Not implemented yet.
+     */
+    // SM2SM3 = 'SM2SM3',
 }
 
 /**
@@ -159,6 +318,9 @@ export enum EDigestType {
 
     /**
      * SHAKE-256 digest algorithm.
+     *
+     * NOTE: This digest algorithm is only for Ed448 in EdDSA signing,
+     * don't use it for other purposes.
      */
     SHAKE256 = 'shake256',
 }

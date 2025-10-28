@@ -4,27 +4,27 @@
 
 ## References
 
-### EcdsaJwtSigner
+### EcdsaJwaSigner
 
-Re-exports [EcdsaJwtSigner](../Algorithms/Ecdsa/classes/EcdsaJwtSigner.md)
-
-***
-
-### EcdsaJwtVerifier
-
-Re-exports [EcdsaJwtVerifier](../Algorithms/Ecdsa/classes/EcdsaJwtVerifier.md)
+Re-exports [EcdsaJwaSigner](../Algorithms/Ecdsa/classes/EcdsaJwaSigner.md)
 
 ***
 
-### EddsaJwtSigner
+### EcdsaJwaVerifier
 
-Re-exports [EddsaJwtSigner](../Algorithms/Eddsa/classes/EddsaJwtSigner.md)
+Re-exports [EcdsaJwaVerifier](../Algorithms/Ecdsa/classes/EcdsaJwaVerifier.md)
 
 ***
 
-### EddsaJwtVerifier
+### EddsaJwaSigner
 
-Re-exports [EddsaJwtVerifier](../Algorithms/Eddsa/classes/EddsaJwtVerifier.md)
+Re-exports [EddsaJwaSigner](../Algorithms/Eddsa/classes/EddsaJwaSigner.md)
+
+***
+
+### EddsaJwaVerifier
+
+Re-exports [EddsaJwaVerifier](../Algorithms/Eddsa/classes/EddsaJwaVerifier.md)
 
 ***
 
@@ -52,15 +52,33 @@ Re-exports [ESigningJwa](../Constants/enumerations/ESigningJwa.md)
 
 ***
 
-### HmacJwtSigner
+### EStdHeaderClaim
 
-Re-exports [HmacJwtSigner](../Algorithms/Hmac/classes/HmacJwtSigner.md)
+Re-exports [EStdHeaderClaim](../Constants/enumerations/EStdHeaderClaim.md)
 
 ***
 
-### HmacJwtVerifier
+### EStdPayloadClaim
 
-Re-exports [HmacJwtVerifier](../Algorithms/Hmac/classes/HmacJwtVerifier.md)
+Re-exports [EStdPayloadClaim](../Constants/enumerations/EStdPayloadClaim.md)
+
+***
+
+### HmacJwaSigner
+
+Re-exports [HmacJwaSigner](../Algorithms/Hmac/classes/HmacJwaSigner.md)
+
+***
+
+### HmacJwaVerifier
+
+Re-exports [HmacJwaVerifier](../Algorithms/Hmac/classes/HmacJwaVerifier.md)
+
+***
+
+### IAudienceValidationOptions
+
+Re-exports [IAudienceValidationOptions](../Validators/Audience/interfaces/IAudienceValidationOptions.md)
 
 ***
 
@@ -70,9 +88,9 @@ Re-exports [IEcdsaSignerOptions](../Algorithms/Ecdsa/interfaces/IEcdsaSignerOpti
 
 ***
 
-### IEcdsaVerifierOptions
+### IEcdsaValidatorOptions
 
-Re-exports [IEcdsaVerifierOptions](../Algorithms/Ecdsa/interfaces/IEcdsaVerifierOptions.md)
+Re-exports [IEcdsaValidatorOptions](../Algorithms/Ecdsa/interfaces/IEcdsaValidatorOptions.md)
 
 ***
 
@@ -82,9 +100,9 @@ Re-exports [IEddsaSignerOptions](../Algorithms/Eddsa/interfaces/IEddsaSignerOpti
 
 ***
 
-### IEddsaVerifierOptions
+### IEddsaValidatorOptions
 
-Re-exports [IEddsaVerifierOptions](../Algorithms/Eddsa/interfaces/IEddsaVerifierOptions.md)
+Re-exports [IEddsaValidatorOptions](../Algorithms/Eddsa/interfaces/IEddsaValidatorOptions.md)
 
 ***
 
@@ -94,21 +112,45 @@ Re-exports [IHmacSignerOptions](../Algorithms/Hmac/interfaces/IHmacSignerOptions
 
 ***
 
-### IHmacVerifierOptions
+### IHmacValidatorOptions
 
-Re-exports [IHmacVerifierOptions](../Algorithms/Hmac/interfaces/IHmacVerifierOptions.md)
+Re-exports [IHmacValidatorOptions](../Algorithms/Hmac/interfaces/IHmacValidatorOptions.md)
 
 ***
 
-### IJwtDecodeResult
+### IIssuerValidationOptions
 
-Re-exports [IJwtDecodeResult](../Types/interfaces/IJwtDecodeResult.md)
+Re-exports [IIssuerValidationOptions](../Validators/Issuer/interfaces/IIssuerValidationOptions.md)
+
+***
+
+### IJwaSigner
+
+Re-exports [IJwaSigner](../Types/interfaces/IJwaSigner.md)
+
+***
+
+### IJwtAsyncValidator
+
+Re-exports [IJwtAsyncValidator](../Types/interfaces/IJwtAsyncValidator.md)
+
+***
+
+### IJwtBuilderOptions
+
+Re-exports [IJwtBuilderOptions](../ManagedApis/Builder/interfaces/IJwtBuilderOptions.md)
 
 ***
 
 ### IJwtHeader
 
 Re-exports [IJwtHeader](../Types/interfaces/IJwtHeader.md)
+
+***
+
+### IJwtHeaderInput
+
+Re-exports [IJwtHeaderInput](../Types/type-aliases/IJwtHeaderInput.md)
 
 ***
 
@@ -124,15 +166,15 @@ Re-exports [IJwtPayload](../Types/interfaces/IJwtPayload.md)
 
 ***
 
-### IJwtSigner
-
-Re-exports [IJwtSigner](../Types/interfaces/IJwtSigner.md)
-
-***
-
 ### IJwtValidator
 
 Re-exports [IJwtValidator](../Types/interfaces/IJwtValidator.md)
+
+***
+
+### IJwtVerifierOptions
+
+Re-exports [IJwtVerifierOptions](../ManagedApis/Verifier/interfaces/IJwtVerifierOptions.md)
 
 ***
 
@@ -142,9 +184,21 @@ Re-exports [IRsaSignerOptions](../Algorithms/Rsa/interfaces/IRsaSignerOptions.md
 
 ***
 
-### IRsaVerifierOptions
+### IRsaValidatorOptions
 
-Re-exports [IRsaVerifierOptions](../Algorithms/Rsa/interfaces/IRsaVerifierOptions.md)
+Re-exports [IRsaValidatorOptions](../Algorithms/Rsa/interfaces/IRsaValidatorOptions.md)
+
+***
+
+### ISetHeaderClaimOptions
+
+Re-exports [ISetHeaderClaimOptions](../ManagedApis/Builder/interfaces/ISetHeaderClaimOptions.md)
+
+***
+
+### ISetPayloadClaimOptions
+
+Re-exports [ISetPayloadClaimOptions](../ManagedApis/Builder/interfaces/ISetPayloadClaimOptions.md)
 
 ***
 
@@ -154,21 +208,81 @@ Re-exports [IStringifyOptions](../CoreApis/Stringify/interfaces/IStringifyOption
 
 ***
 
+### ISubjectValidationOptions
+
+Re-exports [ISubjectValidationOptions](../Validators/Subject/interfaces/ISubjectValidationOptions.md)
+
+***
+
+### ITimeValidityValidationOptions
+
+Re-exports [ITimeValidityValidationOptions](../Validators/TimeValidity/interfaces/ITimeValidityValidationOptions.md)
+
+***
+
+### JwtAsyncVerifier
+
+Re-exports [JwtAsyncVerifier](../ManagedApis/Verifier/classes/JwtAsyncVerifier.md)
+
+***
+
+### JwtAudienceValidator
+
+Re-exports [JwtAudienceValidator](../Validators/Audience/classes/JwtAudienceValidator.md)
+
+***
+
+### JwtBuilder
+
+Re-exports [JwtBuilder](../ManagedApis/Builder/classes/JwtBuilder.md)
+
+***
+
+### JwtIssuerValidator
+
+Re-exports [JwtIssuerValidator](../Validators/Issuer/classes/JwtIssuerValidator.md)
+
+***
+
+### JwtSubjectValidator
+
+Re-exports [JwtSubjectValidator](../Validators/Subject/classes/JwtSubjectValidator.md)
+
+***
+
+### JwtTimeValidityValidator
+
+Re-exports [JwtTimeValidityValidator](../Validators/TimeValidity/classes/JwtTimeValidityValidator.md)
+
+***
+
+### JwtVerifier
+
+Re-exports [JwtVerifier](../ManagedApis/Verifier/classes/JwtVerifier.md)
+
+***
+
 ### parse
 
 Re-exports [parse](../CoreApis/Parse/functions/parse.md)
 
 ***
 
-### RsaJwtSigner
+### RsaJwaSigner
 
-Re-exports [RsaJwtSigner](../Algorithms/Rsa/classes/RsaJwtSigner.md)
+Re-exports [RsaJwaSigner](../Algorithms/Rsa/classes/RsaJwaSigner.md)
 
 ***
 
-### RsaJwtVerifier
+### RsaJwaVerifier
 
-Re-exports [RsaJwtVerifier](../Algorithms/Rsa/classes/RsaJwtVerifier.md)
+Re-exports [RsaJwaVerifier](../Algorithms/Rsa/classes/RsaJwaVerifier.md)
+
+***
+
+### STANDARD\_HEADER\_CLAIMS
+
+Re-exports [STANDARD_HEADER_CLAIMS](../Constants/variables/STANDARD_HEADER_CLAIMS.md)
 
 ***
 

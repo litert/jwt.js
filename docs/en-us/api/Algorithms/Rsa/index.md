@@ -4,10 +4,10 @@
 
 ## Classes
 
-- [RsaJwtSigner](classes/RsaJwtSigner.md)
-- [RsaJwtVerifier](classes/RsaJwtVerifier.md)
+- [RsaJwaSigner](classes/RsaJwaSigner.md)
+- [RsaJwaVerifier](classes/RsaJwaVerifier.md)
 
 ## Interfaces
 
 - [IRsaSignerOptions](interfaces/IRsaSignerOptions.md)
-- [IRsaVerifierOptions](interfaces/IRsaVerifierOptions.md)
+- [IRsaValidatorOptions](interfaces/IRsaValidatorOptions.md)

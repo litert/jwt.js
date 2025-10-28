@@ -4,7 +4,7 @@
 
 > **stringify**(`options`): `string`
 
-Defined in: src/lib/CoreApis/Stringify.ts:63
+Defined in: [src/lib/CoreApis/Stringify.ts:81](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L81)
 
 Encode the provided JWT data into a signed JWT string.
 
@@ -30,3 +30,21 @@ The options to use for stringification of the JWT.
 `string`
 
 The signed JWT string.
+
+## Example
+
+```ts
+import * as LibJWT from '@litert/jwt';
+const signer = new LibJWT.RsaJwaSigner({
+  privateKey: '-----BEGIN PRIVATE KEY-----\n...',
+  digestType: LibJWT.EDigestType.SHA256,
+});
+const token = LibJWT.stringify({
+  header: {
+    kid: 'my-key-id',
+  },
+  payload: { foo: 'bar' },
+  signer: signer,
+});
+console.log(token);
+```

@@ -2,7 +2,7 @@
 
 # Interface: IHmacSignerOptions
 
-Defined in: src/lib/Algorithms/Hmac.ts:25
+Defined in: [src/lib/Algorithms/Hmac.ts:25](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L25)
 
 The options for creating an HMAC JWT signer.
 
@@ -12,7 +12,7 @@ The options for creating an HMAC JWT signer.
 
 > **digestType**: [`EDigestType`](../../../Constants/enumerations/EDigestType.md)
 
-Defined in: src/lib/Algorithms/Hmac.ts:35
+Defined in: [src/lib/Algorithms/Hmac.ts:40](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L40)
 
 The digest type to use for signing.
 
@@ -22,9 +22,16 @@ The digest type to use for signing.
 
 > **key**: `string` \| `Buffer`\<`ArrayBufferLike`\>
 
-Defined in: src/lib/Algorithms/Hmac.ts:30
+Defined in: [src/lib/Algorithms/Hmac.ts:35](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L35)
 
 The secret key to use for signing.
+If a string is provided, it will be treated as a UTF-8 encoded string.
+
+#### Recommended
+
+Use at least 256-bit (32 bytes) key for HMAC-SHA256,
+             384-bit (48 bytes) key for HMAC-SHA384, and
+             512-bit (64 bytes) key for HMAC-SHA512.
 
 ***
 
@@ -32,7 +39,7 @@ The secret key to use for signing.
 
 > `optional` **keyId**: `string` \| `null`
 
-Defined in: src/lib/Algorithms/Hmac.ts:46
+Defined in: [src/lib/Algorithms/Hmac.ts:51](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L51)
 
 The key ID to use in the JWT header.
 

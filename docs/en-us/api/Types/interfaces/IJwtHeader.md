@@ -2,7 +2,7 @@
 
 # Interface: IJwtHeader
 
-Defined in: src/lib/Types.ts:23
+Defined in: [src/lib/Types.ts:23](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L23)
 
 The structure of JWT Header.
 
@@ -18,7 +18,7 @@ Other claims.
 
 > **alg**: `"RS256"` \| `"RS384"` \| `"RS512"` \| `"PS256"` \| `"PS384"` \| `"PS512"` \| `"HS256"` \| `"HS384"` \| `"HS512"` \| `"ES256"` \| `"ES256K"` \| `"ES384"` \| `"ES512"` \| `"EdDSA"`
 
-Defined in: src/lib/Types.ts:46
+Defined in: [src/lib/Types.ts:46](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L46)
 
 The "alg" (algorithm) Header Parameter identifies the cryptographic
 algorithm used to secure the JWS.  The JWS Signature value is not
@@ -37,7 +37,7 @@ A list of defined "alg" values for this use can be found in the IANA
 by JWA; the initial contents of this registry are the values
 defined in Section 3.1 of JWA.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
 
@@ -49,7 +49,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
 
 > `optional` **crit**: `string`[]
 
-Defined in: src/lib/Types.ts:215
+Defined in: [src/lib/Types.ts:215](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L215)
 
 The "crit" (critical) Header Parameter indicates that extensions to
 this specification and/or [JWA] are being used that MUST be
@@ -69,7 +69,7 @@ integrity protected; therefore, it MUST occur only within the JWS
 Protected Header.  Use of this Header Parameter is OPTIONAL.  This
 Header Parameter MUST be understood and processed by implementations.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
 
@@ -81,13 +81,13 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
 
 > `optional` **cty**: `"JWT"`
 
-Defined in: src/lib/Types.ts:106
+Defined in: [src/lib/Types.ts:106](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L106)
 
 The "cty" (content type) Header Parameter defined by [JWS] and [JWE]
 is used by this specification to convey structural information about
 the JWT.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7519#section-5.2
 
@@ -99,7 +99,7 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-5.2
 
 > `optional` **jku**: `string`
 
-Defined in: src/lib/Types.ts:85
+Defined in: [src/lib/Types.ts:85](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L85)
 
 The "jku" (JWK Set URL) Header Parameter is a URI [RFC3986] that
 refers to a resource for a set of JSON-encoded public keys, one of
@@ -112,7 +112,7 @@ validated, as per Section 6 of RFC 6125 [RFC6125].  Also, see
 Section 8 on TLS requirements.  Use of this Header Parameter is
 OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
 
@@ -124,14 +124,14 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
 
 > `optional` **jwk**: `string`
 
-Defined in: src/lib/Types.ts:96
+Defined in: [src/lib/Types.ts:96](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L96)
 
 The "jwk" (JSON Web Key) Header Parameter is the public key that
 corresponds to the key used to digitally sign the JWS.  This key is
 represented as a JSON Web Key [JWK].  Use of this Header Parameter is
 OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
 
@@ -143,7 +143,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
 
 > `optional` **kid**: `string`
 
-Defined in: src/lib/Types.ts:191
+Defined in: [src/lib/Types.ts:191](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L191)
 
 The "kid" (key ID) Header Parameter is a hint indicating which key
 was used to secure the JWS.  This parameter allows originators to
@@ -154,7 +154,7 @@ string.  Use of this Header Parameter is OPTIONAL.
 When used with a JWK, the "kid" value is used to match a JWK "kid"
 parameter value.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
 
@@ -166,7 +166,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
 
 > `optional` **typ**: `"JWT"`
 
-Defined in: src/lib/Types.ts:68
+Defined in: [src/lib/Types.ts:68](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L68)
 
 The "typ" (type) Header Parameter defined by JWS and JWE is used
 by JWT applications to declare the media type IANA.MediaTypes of
@@ -183,7 +183,7 @@ media type names are not case sensitive, it is RECOMMENDED that "JWT"
 always be spelled using uppercase characters for compatibility with
 legacy implementations.  Use of this Header Parameter is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
 
@@ -197,7 +197,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
 
 > `optional` **x5c**: `string`[]
 
-Defined in: src/lib/Types.ts:153
+Defined in: [src/lib/Types.ts:153](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L153)
 
 The "x5c" (X.509 certificate chain) Header Parameter contains the
 X.509 public key certificate or certificate chain [RFC5280]
@@ -214,7 +214,7 @@ the certificate chain according to RFC 5280 [RFC5280] and consider
 the certificate or certificate chain to be invalid if any validation
 failure occurs.  Use of this Header Parameter is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
 
@@ -226,7 +226,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
 
 > `optional` **x5t**: `string`
 
-Defined in: src/lib/Types.ts:119
+Defined in: [src/lib/Types.ts:119](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L119)
 
 The "x5t" (X.509 certificate SHA-1 thumbprint) Header Parameter is a
 base64url-encoded SHA-1 thumbprint (a.k.a. digest) of the DER
@@ -235,7 +235,7 @@ used to digitally sign the JWS.  Note that certificate thumbprints
 are also sometimes known as certificate fingerprints.  Use of this
 Header Parameter is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
 
@@ -247,7 +247,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
 
 > `optional` **x5t#S256**: `string`
 
-Defined in: src/lib/Types.ts:132
+Defined in: [src/lib/Types.ts:132](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L132)
 
 The "x5t#S256" (X.509 certificate SHA-256 thumbprint) Header
 Parameter is a base64url-encoded SHA-256 thumbprint (a.k.a. digest)
@@ -256,7 +256,7 @@ to the key used to digitally sign the JWS.  Note that certificate
 thumbprints are also sometimes known as certificate fingerprints.
 Use of this Header Parameter is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
 
@@ -268,7 +268,7 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
 
 > `optional` **x5u**: `string`
 
-Defined in: src/lib/Types.ts:176
+Defined in: [src/lib/Types.ts:176](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L176)
 
 The "x5u" (X.509 URL) Header Parameter is a URI [RFC3986] that refers
 to a resource for the X.509 public key certificate or certificate
@@ -287,7 +287,7 @@ the server MUST be validated, as per Section 6 of RFC 6125 [RFC6125].
 Also, see Section 8 on TLS requirements.  Use of this Header
 Parameter is OPTIONAL.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.5
 

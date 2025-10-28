@@ -2,7 +2,7 @@
 
 # Interface: IRsaSignerOptions
 
-Defined in: src/lib/Algorithms/Rsa.ts:25
+Defined in: [src/lib/Algorithms/Rsa.ts:26](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L26)
 
 The options for creating an RSA JWT signer.
 
@@ -12,7 +12,7 @@ The options for creating an RSA JWT signer.
 
 > **digestType**: [`EDigestType`](../../../Constants/enumerations/EDigestType.md)
 
-Defined in: src/lib/Algorithms/Rsa.ts:46
+Defined in: [src/lib/Algorithms/Rsa.ts:47](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L47)
 
 The digest type to use for signing.
 
@@ -22,7 +22,7 @@ The digest type to use for signing.
 
 > `optional` **keyId**: `string` \| `null`
 
-Defined in: src/lib/Algorithms/Rsa.ts:41
+Defined in: [src/lib/Algorithms/Rsa.ts:42](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L42)
 
 The key ID to use in the JWT header.
 
@@ -38,6 +38,27 @@ The key ID to use in the JWT header.
 
 > **privateKey**: `string` \| `KeyObject`
 
-Defined in: src/lib/Algorithms/Rsa.ts:30
+Defined in: [src/lib/Algorithms/Rsa.ts:31](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L31)
 
 The private key to use for signing.
+
+***
+
+### usePssPadding?
+
+> `optional` **usePssPadding**: `boolean` \| `null`
+
+Defined in: [src/lib/Algorithms/Rsa.ts:59](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L59)
+
+Whether to use RSA-PSS padding for signing.
+
+Set to `null` to use the default padding scheme based on the key type.
+
+If a RSA-PSS key is provided, but this option is set to `false`, an error
+will be thrown.
+
+#### Default
+
+```ts
+null
+```

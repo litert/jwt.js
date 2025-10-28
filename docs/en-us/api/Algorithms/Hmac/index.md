@@ -4,10 +4,10 @@
 
 ## Classes
 
-- [HmacJwtSigner](classes/HmacJwtSigner.md)
-- [HmacJwtVerifier](classes/HmacJwtVerifier.md)
+- [HmacJwaSigner](classes/HmacJwaSigner.md)
+- [HmacJwaVerifier](classes/HmacJwaVerifier.md)
 
 ## Interfaces
 
 - [IHmacSignerOptions](interfaces/IHmacSignerOptions.md)
-- [IHmacVerifierOptions](interfaces/IHmacVerifierOptions.md)
+- [IHmacValidatorOptions](interfaces/IHmacValidatorOptions.md)

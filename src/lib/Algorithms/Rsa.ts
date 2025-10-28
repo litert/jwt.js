@@ -18,6 +18,7 @@ import * as NodeCrypto from 'node:crypto';
 import * as cL from '../Constants';
 import * as eL from '../Errors';
 import type * as dL from '../Types';
+import * as uL from '../_internal/Utils';
 
 /**
  * The options for creating an RSA JWT signer.
@@ -44,19 +45,37 @@ export interface IRsaSignerOptions {
      * The digest type to use for signing.
      */
     'digestType': cL.EDigestType;
+
+    /**
+     * Whether to use RSA-PSS padding for signing.
+     *
+     * Set to `null` to use the default padding scheme based on the key type.
+     *
+     * If a RSA-PSS key is provided, but this option is set to `false`, an error
+     * will be thrown.
+     *
+     * @default null
+     */
+    'usePssPadding'?: boolean | null;
 }
 
 type IKeyUsage = Partial<Record<'public' | 'private', boolean>>;
+
+const PSS_OPTS = {
+    'padding': NodeCrypto.constants.RSA_PKCS1_PSS_PADDING,
+    'saltLength': NodeCrypto.constants.RSA_PSS_SALTLEN_DIGEST,
+};
 
 function extractJwaFromKey(
     key: NodeCrypto.KeyObject,
     digest: cL.EDigestType,
     keyUsage: IKeyUsage,
-): cL.ESigningJwa {
+    usePSS: boolean | null = null,
+): [cL.ESigningJwa, NodeCrypto.SignKeyObjectInput] {
 
     if (!key.asymmetricKeyDetails || !key.asymmetricKeyType) {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_TYPE, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.INVALID_KEY_FORMAT, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -65,7 +84,7 @@ function extractJwaFromKey(
 
     if (key.asymmetricKeyType !== 'rsa' && key.asymmetricKeyType !== 'rsa-pss') {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_ALGO, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -74,16 +93,34 @@ function extractJwaFromKey(
 
     if (!keyUsage[key.type as 'public']) {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_USAGE, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.INVALID_KEY_USAGE, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
         });
     }
 
-    if (key.asymmetricKeyDetails.modulusLength! < 2048) {
+    // if (key.asymmetricKeyDetails.modulusLength! < 2048) {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_SIZE, {
+    //     throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.INVALID_KEY_WEAK, {
+    //         'keyUsage': key.type,
+    //         'keyDetails': key.asymmetricKeyDetails,
+    //         'keyAlgo': key.asymmetricKeyType,
+    //     });
+    // }
+
+    if (usePSS === false && key.asymmetricKeyType === 'rsa-pss') {
+
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
+            'keyUsage': key.type,
+            'keyDetails': key.asymmetricKeyDetails,
+            'keyAlgo': key.asymmetricKeyType,
+        });
+    }
+
+    if ((key.asymmetricKeyDetails.hashAlgorithm ?? digest) !== digest) {
+
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -92,19 +129,28 @@ function extractJwaFromKey(
 
     switch (`${key.asymmetricKeyType}-${digest}`) {
         case 'rsa-sha256':
-            return cL.ESigningJwa.RS256;
+            if (usePSS === true) {
+                return [cL.ESigningJwa.PS256, { 'key': key, ...PSS_OPTS }];
+            }
+            return [cL.ESigningJwa.RS256, { key }];
         case 'rsa-sha384':
-            return cL.ESigningJwa.RS384;
+            if (usePSS === true) {
+                return [cL.ESigningJwa.PS384, { 'key': key, ...PSS_OPTS }];
+            }
+            return [cL.ESigningJwa.RS384, { key }];
         case 'rsa-sha512':
-            return cL.ESigningJwa.RS512;
+            if (usePSS === true) {
+                return [cL.ESigningJwa.PS512, { 'key': key, ...PSS_OPTS }];
+            }
+            return [cL.ESigningJwa.RS512, { key }];
         case 'rsa-pss-sha256':
-            return cL.ESigningJwa.PS256;
+            return [cL.ESigningJwa.PS256, { key }];
         case 'rsa-pss-sha384':
-            return cL.ESigningJwa.PS384;
+            return [cL.ESigningJwa.PS384, { key }];
         case 'rsa-pss-sha512':
-            return cL.ESigningJwa.PS512;
+            return [cL.ESigningJwa.PS512, { key }];
         default:
-            throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_JWA_KEY, {
+            throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
                 'keyUsage': key.type,
                 'keyDetails': key.asymmetricKeyDetails,
                 'keyAlgo': key.asymmetricKeyType,
@@ -112,47 +158,39 @@ function extractJwaFromKey(
     }
 }
 
-function preparePrivateKey(key: string | NodeCrypto.KeyObject): NodeCrypto.KeyObject {
-
-    if (key instanceof NodeCrypto.KeyObject) {
-
-        return key;
-    }
-
-    try {
-
-        return NodeCrypto.createPrivateKey({
-            format: (typeof key === 'string' ? 'pem' : 'der'),
-            key,
-        });
-    }
-    catch (e) {
-
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_FORMAT, {}, e);
-    }
-}
-
-function preparePublicKey(key: string | NodeCrypto.KeyObject): NodeCrypto.KeyObject {
-
-    if (key instanceof NodeCrypto.KeyObject) {
-
-        return key;
-    }
-
-    try {
-
-        return NodeCrypto.createPublicKey(key);
-    }
-    catch (e) {
-
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_FORMAT, {}, e);
-    }
-}
-
 /**
- * The RSA JWT signer implementation.
+ * The RSA JWT signer implementation, for both RSASSA-PKCS1-v1_5 (RS256, ...)
+ * and RSASSA-PSS (PS256, ...).
+ *
+ * @example
+ *
+ * Signing with RSASSA-PKCS1-v1_5:
+ *
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const signer = new LibJWT.RsaJwaSigner({
+ *     // NOTE: Don't use a RSA key with PSS padding parameters here.
+ *     'privateKey': '-----BEGIN PRIVATE KEY-----\n...',
+ *     'digestType': LibJWT.EDigestType.SHA256,
+ * });
+ * // ...
+ * ```
+ *
+ * Signing with RSASSA-PSS:
+ *
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const signer = new LibJWT.RsaJwaSigner({
+ *     'privateKey': '-----BEGIN PRIVATE KEY-----\n...',
+ *     'digestType': LibJWT.EDigestType.SHA256,
+ *     // NOTE: if your key is generated as RSA-PSS key, the usePssPadding
+ *     // option can be omitted or set to null.
+ *     'usePssPadding': true,
+ * });
+ * // ...
+ * ```
  */
-export class RsaJwtSigner implements dL.IJwtSigner {
+export class RsaJwaSigner implements dL.IJwaSigner {
 
     public readonly family: cL.ESigningAlgoFamily = cL.ESigningAlgoFamily.RSA;
 
@@ -162,28 +200,48 @@ export class RsaJwtSigner implements dL.IJwtSigner {
 
     public readonly digestType: cL.EDigestType;
 
-    private readonly _key: NodeCrypto.KeyObject;
+    private readonly _signOpts: NodeCrypto.SignKeyObjectInput;
 
     public constructor(opts: IRsaSignerOptions) {
 
         this.keyId = opts.keyId;
-        this._key = preparePrivateKey(opts.privateKey);
+        const key = uL.preparePrivateKey(opts.privateKey);
         this.digestType = opts.digestType;
-        this.jwa = extractJwaFromKey(this._key, this.digestType, { private: true });
+        [this.jwa, this._signOpts] = extractJwaFromKey(
+            key,
+            this.digestType,
+            { private: true },
+            opts.usePssPadding ?? null,
+        );
     }
 
     public sign(content: Buffer | string): Buffer {
 
-        return NodeCrypto.createSign(this.digestType)
-            .update(content)
-            .sign(this._key);
+        const signer = uL.createSigner(this.digestType);
+
+        try {
+
+            return signer
+                .update(content)
+                .sign(this._signOpts);
+        }
+        catch (e) {
+            throw new eL.E_SIGN_FAILED(eL.EErrorCode.SIGN_FAILED, {}, e);
+        }
     }
 }
 
 /**
- * The options for creating an RSA signature verifier for JWT.
+ * The options for creating an RSA signature validator for JWT.
  */
-export interface IRsaVerifierOptions {
+export interface IRsaValidatorOptions {
+
+    /**
+     * A custom name for this validator.
+     *
+     * @default 'RsaJwaVerifier'
+     */
+    'customName'?: string;
 
     /**
      * The public key to use for RSA signature verification.
@@ -201,15 +259,41 @@ export interface IRsaVerifierOptions {
      * The digest type to use for RSA signature verification.
      */
     'digestType': cL.EDigestType;
+
+    /**
+     * Whether to use RSA-PSS padding for verification.
+     *
+     * Set to `null` to use the default padding scheme based on the key type.
+     *
+     * If a RSA-PSS key is provided, but this option is set to `false`, an error
+     * will be thrown.
+     *
+     * @default null
+     */
+    'usePssPadding'?: boolean | null;
 }
 
 /**
- * The RSA signature verifier implementation for JWT.
+ * The RSA signature validator implementation for JWT.
  *
- * This verifier class checks if the signature is valid.
+ * This validator class checks if the signature is valid.
  * It neither parses the JWT, nor validates the JWT token claims.
+ *
+ * @example
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const validator = new LibJWT.RsaJwaVerifier({
+ *    publicKey: '-----BEGIN PUBLIC KEY-----\n...',
+ *    digestType: LibJWT.EDigestType.SHA256,
+ * });
+ * const info = LibJWT.parse(token); // Signature is not verified here.
+ * const isValid = validator.validate(info);
+ * console.log(isValid);
+ * ```
  */
-export class RsaJwtVerifier implements dL.IJwtValidator {
+export class RsaJwaVerifier implements dL.IJwtValidator {
+
+    public readonly name: string;
 
     /**
      * The signing algorithm family.
@@ -226,35 +310,60 @@ export class RsaJwtVerifier implements dL.IJwtValidator {
      */
     public readonly jwa: cL.ESigningJwa;
 
-    private readonly _digestType: cL.EDigestType;
+    /**
+     * The digest type to use for verification.
+     */
+    public readonly digestType: cL.EDigestType;
 
-    private readonly _key: NodeCrypto.KeyObject;
+    private readonly _verifyOpts: NodeCrypto.VerifyKeyObjectInput;
 
-    public constructor(opts: IRsaVerifierOptions) {
+    public constructor(opts: IRsaValidatorOptions) {
 
+        this.name = opts.customName ?? RsaJwaVerifier.name;
         this.checkAlgClaim = opts.checkAlgClaim ?? true;
-        this._key = preparePublicKey(opts.publicKey);
-        this._digestType = opts.digestType;
+        this.digestType = opts.digestType;
+        const key = uL.preparePublicKey(opts.publicKey);
 
-        this.jwa = extractJwaFromKey(this._key, this._digestType, {
-            public: true,
-            private: true, // Private key can also be used for verification
-        });
+        [this.jwa, this._verifyOpts] = extractJwaFromKey(
+            key,
+            this.digestType,
+            {
+                public: true,
+                private: true, // Private key can also be used for verification
+            },
+            opts.usePssPadding ?? null
+        );
     }
 
-    public validate(data: dL.IJwtParseResult): boolean {
+    public validate(data: dL.IJwtParseResult): void {
 
         /**
          * The `alg` header claim is optional, do not check it unless it's
          * present.
          */
-        if ('alg' in data.header && data.header.alg !== this.jwa) {
+        if (this.checkAlgClaim && 'alg' in data.header && data.header.alg !== this.jwa) {
 
-            return false;
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_ALG_MISMATCH);
         }
 
-        return NodeCrypto.createVerify(this._digestType)
-            .update(data.signedContent)
-            .verify(this._key, data.signature);
+        const verifier = uL.createVerifier(this.digestType);
+
+        let result: boolean;
+
+        try {
+
+            result = verifier
+                .update(data.signedContent)
+                .verify(this._verifyOpts, data.signature);
+        }
+        catch (e) {
+
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_VERIFY_FAILED, {}, e);
+        }
+
+        if (!result) {
+
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_VERIFY_FAILED);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 # Abstract Class: JwtError
 
-Defined in: src/lib/Errors.ts:22
+Defined in: [src/lib/Errors.ts:22](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L22)
 
 The class representing errors in JWT module.
 
@@ -10,13 +10,19 @@ The class representing errors in JWT module.
 
 - `Error`
 
+## Extended by
+
+- [`E_VERIFY_FAILED`](E_VERIFY_FAILED.md)
+- [`E_INVALID_SETTINGS`](E_INVALID_SETTINGS.md)
+- [`E_SIGN_FAILED`](E_SIGN_FAILED.md)
+
 ## Constructors
 
 ### Constructor
 
 > **new JwtError**(`code`, `context`, `origin`): `JwtError`
 
-Defined in: src/lib/Errors.ts:53
+Defined in: [src/lib/Errors.ts:53](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L53)
 
 #### Parameters
 
@@ -58,7 +64,7 @@ Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:26
 
 > `readonly` **code**: [`EErrorCode`](../enumerations/EErrorCode.md)
 
-Defined in: src/lib/Errors.ts:41
+Defined in: [src/lib/Errors.ts:41](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L41)
 
 The reason code of the exception.
 
@@ -68,7 +74,7 @@ The reason code of the exception.
 
 > `readonly` **context**: `IDict`
 
-Defined in: src/lib/Errors.ts:31
+Defined in: [src/lib/Errors.ts:31](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L31)
 
 Context of the exception.
 
@@ -106,7 +112,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1076
 
 > `readonly` **origin**: `unknown`
 
-Defined in: src/lib/Errors.ts:36
+Defined in: [src/lib/Errors.ts:36](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L36)
 
 The origin of the exception.
 
@@ -128,7 +134,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 > `static` **errorMessage**: `string` = `'unknown'`
 
-Defined in: src/lib/Errors.ts:51
+Defined in: [src/lib/Errors.ts:51](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L51)
 
 The description of the error.
 
@@ -138,7 +144,7 @@ The description of the error.
 
 > `static` **errorName**: `string` = `'unknown'`
 
-Defined in: src/lib/Errors.ts:46
+Defined in: [src/lib/Errors.ts:46](https://github.com/litert/jwt.js/blob/master/src/lib/Errors.ts#L46)
 
 The error name.
 

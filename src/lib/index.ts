@@ -17,9 +17,15 @@
 export * from './CoreApis/Stringify';
 export * from './CoreApis/Parse';
 export * from './Constants';
-export * from './Types';
+export type * from './Types';
 export * as Errors from './Errors';
 export * from './Algorithms/Hmac';
 export * from './Algorithms/Ecdsa';
 export * from './Algorithms/Eddsa';
 export * from './Algorithms/Rsa';
+export * from './Validators/Audience';
+export * from './Validators/Issuer';
+export * from './Validators/Subject';
+export * from './Validators/TimeValidity';
+export * from './ManagedApis/Builder';
+export * from './ManagedApis/Verifier';

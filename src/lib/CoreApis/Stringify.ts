@@ -15,6 +15,7 @@
  */
 
 import type * as dL from '../Types';
+import * as eL from '../Errors';
 
 /**
  * The options for API `stringify`.
@@ -28,7 +29,7 @@ export interface IStringifyOptions {
      * automatically according to the provided signer. And they are not
      * allowed to be overridden.
      */
-    header?: Partial<dL.IJwtHeader>;
+    header?: dL.IJwtHeaderInput;
 
     /**
      * The JWT payload to use.
@@ -41,7 +42,7 @@ export interface IStringifyOptions {
     /**
      * The signer to use for signing the JWT.
      */
-    signer: dL.IJwtSigner;
+    signer: dL.IJwaSigner;
 }
 
 /**
@@ -59,22 +60,48 @@ export interface IStringifyOptions {
  * @param options   The options to use for stringification of the JWT.
  *
  * @returns  The signed JWT string.
+ *
+ * @example
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const signer = new LibJWT.RsaJwaSigner({
+ *   privateKey: '-----BEGIN PRIVATE KEY-----\n...',
+ *   digestType: LibJWT.EDigestType.SHA256,
+ * });
+ * const token = LibJWT.stringify({
+ *   header: {
+ *     kid: 'my-key-id',
+ *   },
+ *   payload: { foo: 'bar' },
+ *   signer: signer,
+ * });
+ * console.log(token);
+ * ```
  */
 export function stringify(options: IStringifyOptions): string {
 
-    const signingInput = `${
+    let signingInput: string;
+
+    try {
+
+        signingInput = `${
             Buffer.from(JSON.stringify({
-            ...options.header,
-            typ: 'JWT',
-            alg: options.signer.jwa,
-        }), 'utf-8').toString('base64url')
-    }.${
-        Buffer.from(JSON.stringify(options.payload), 'utf-8').toString('base64url')
-    }`;
+                ...options.header,
+                typ: 'JWT',
+                alg: options.signer.jwa,
+            }), 'utf-8').toString('base64url')
+        }.${
+            Buffer.from(JSON.stringify(options.payload), 'utf-8').toString('base64url')
+        }`;
+    }
+    catch (e) {
+
+        throw new eL.E_SIGN_FAILED(eL.EErrorCode.INVALID_JWT_CONTENT, {}, e);
+    }
 
     return `${signingInput}.${
         options.signer
-        .sign(Buffer.from(signingInput, 'utf-8'))
-        .toString('base64url')
+            .sign(signingInput)
+            .toString('base64url')
     }`;
 }

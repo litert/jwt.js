@@ -4,10 +4,10 @@
 
 ## Classes
 
-- [EddsaJwtSigner](classes/EddsaJwtSigner.md)
-- [EddsaJwtVerifier](classes/EddsaJwtVerifier.md)
+- [EddsaJwaSigner](classes/EddsaJwaSigner.md)
+- [EddsaJwaVerifier](classes/EddsaJwaVerifier.md)
 
 ## Interfaces
 
 - [IEddsaSignerOptions](interfaces/IEddsaSignerOptions.md)
-- [IEddsaVerifierOptions](interfaces/IEddsaVerifierOptions.md)
+- [IEddsaValidatorOptions](interfaces/IEddsaValidatorOptions.md)

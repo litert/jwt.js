@@ -2,9 +2,9 @@
 
 # Interface: IEddsaSignerOptions
 
-Defined in: src/lib/Algorithms/Eddsa.ts:25
+Defined in: [src/lib/Algorithms/Eddsa.ts:26](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L26)
 
-The options for creating an EDDSA JWT signer.
+The options for creating an EdDSA JWT signer.
 
 ## Properties
 
@@ -12,7 +12,7 @@ The options for creating an EDDSA JWT signer.
 
 > `optional` **keyId**: `string` \| `null`
 
-Defined in: src/lib/Algorithms/Eddsa.ts:41
+Defined in: [src/lib/Algorithms/Eddsa.ts:43](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L43)
 
 The key ID to use in the JWT header.
 
@@ -28,6 +28,7 @@ The key ID to use in the JWT header.
 
 > **privateKey**: `string` \| `KeyObject`
 
-Defined in: src/lib/Algorithms/Eddsa.ts:30
+Defined in: [src/lib/Algorithms/Eddsa.ts:32](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L32)
 
 The private key to use for signing.
+If a string is provided, it must be a PEM encoded ED private key.

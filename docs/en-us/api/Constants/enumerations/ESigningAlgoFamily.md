@@ -2,7 +2,7 @@
 
 # Enumeration: ESigningAlgoFamily
 
-Defined in: src/lib/Constants.ts:20
+Defined in: [src/lib/Constants.ts:171](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L171)
 
 The families of the signing algorithms supported by the library.
 
@@ -12,11 +12,11 @@ The families of the signing algorithms supported by the library.
 
 > **ECDSA**: `2`
 
-Defined in: src/lib/Constants.ts:42
+Defined in: [src/lib/Constants.ts:193](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L193)
 
 Use the ECDSA algorithm for signing.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7518#section-3.4
 
@@ -26,14 +26,17 @@ https://datatracker.ietf.org/doc/html/rfc7518#section-3.4
 
 > **EDDSA**: `3`
 
-Defined in: src/lib/Constants.ts:50
+Defined in: [src/lib/Constants.ts:201](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L201)
 
 Use the EdDSA algorithm for signing.
 
-#### See
+#### Link
 
- - https://datatracker.ietf.org/doc/html/rfc8037#section-3.1
- - https://datatracker.ietf.org/doc/html/rfc8037#appendix-A.4
+https://datatracker.ietf.org/doc/html/rfc8037#section-3.1
+
+#### Link
+
+https://datatracker.ietf.org/doc/html/rfc8037#appendix-A.4
 
 ***
 
@@ -41,11 +44,11 @@ Use the EdDSA algorithm for signing.
 
 > **HMAC**: `1`
 
-Defined in: src/lib/Constants.ts:35
+Defined in: [src/lib/Constants.ts:186](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L186)
 
 Use the HMAC-SHA2 algorithm for signing.
 
-#### See
+#### Link
 
 https://datatracker.ietf.org/doc/html/rfc7518#section-3.2
 
@@ -55,11 +58,14 @@ https://datatracker.ietf.org/doc/html/rfc7518#section-3.2
 
 > **RSA**: `0`
 
-Defined in: src/lib/Constants.ts:28
+Defined in: [src/lib/Constants.ts:179](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L179)
 
 Use the RSA algorithm for signing.
 
-#### See
+#### Link
 
- - https://datatracker.ietf.org/doc/html/rfc7518#section-3.3
- - https://datatracker.ietf.org/doc/html/rfc7518#section-3.5
+https://datatracker.ietf.org/doc/html/rfc7518#section-3.3
+
+#### Link
+
+https://datatracker.ietf.org/doc/html/rfc7518#section-3.5

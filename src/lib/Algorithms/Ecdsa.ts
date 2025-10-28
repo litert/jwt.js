@@ -18,6 +18,7 @@ import * as NodeCrypto from 'node:crypto';
 import * as cL from '../Constants';
 import * as eL from '../Errors';
 import type * as dL from '../Types';
+import * as uL from '../_internal/Utils';
 
 /**
  * The options for creating an ECDSA JWT signer.
@@ -26,6 +27,11 @@ export interface IEcdsaSignerOptions {
 
     /**
      * The private key to use for signing.
+     * If a string is provided, it must be a PEM encoded EC private key,
+     * both PKCS#8 and SEC1 formats are supported.
+     *
+     * The digest algorithm and JWA will be inferred from the key, no need to
+     * specify them manually.
      */
     'privateKey': string | NodeCrypto.KeyObject;
 
@@ -50,7 +56,7 @@ function extractJwaFromKey(key: NodeCrypto.KeyObject, keyUsage: IKeyUsage): [
 
     if (!key.asymmetricKeyDetails || !key.asymmetricKeyType) {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_TYPE, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.INVALID_KEY_FORMAT, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -59,7 +65,7 @@ function extractJwaFromKey(key: NodeCrypto.KeyObject, keyUsage: IKeyUsage): [
 
     if (key.asymmetricKeyType !== 'ec') {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_ALGO, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -68,7 +74,7 @@ function extractJwaFromKey(key: NodeCrypto.KeyObject, keyUsage: IKeyUsage): [
 
     if (!keyUsage[key.type as 'public']) {
 
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_USAGE, {
+        throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.INVALID_KEY_USAGE, {
             'keyUsage': key.type,
             'keyDetails': key.asymmetricKeyDetails,
             'keyAlgo': key.asymmetricKeyType,
@@ -85,7 +91,7 @@ function extractJwaFromKey(key: NodeCrypto.KeyObject, keyUsage: IKeyUsage): [
         case 'secp256k1':
             return [ cL.ESigningJwa.ES256K, cL.EDigestType.SHA256 ];
         default:
-            throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_JWA_KEY, {
+            throw new eL.E_INVALID_SETTINGS(eL.EErrorCode.KEY_ALGO_MISMATCHED, {
                 'keyUsage': key.type,
                 'keyDetails': key.asymmetricKeyDetails,
                 'keyAlgo': key.asymmetricKeyType,
@@ -93,47 +99,23 @@ function extractJwaFromKey(key: NodeCrypto.KeyObject, keyUsage: IKeyUsage): [
     }
 }
 
-function preparePrivateKey(key: string | NodeCrypto.KeyObject): NodeCrypto.KeyObject {
-
-    if (key instanceof NodeCrypto.KeyObject) {
-
-        return key;
-    }
-
-    try {
-
-        return NodeCrypto.createPrivateKey({
-            format: (typeof key === 'string' ? 'pem' : 'der'),
-            key,
-        });
-    }
-    catch (e) {
-
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_FORMAT, {}, e);
-    }
-}
-
-function preparePublicKey(key: string | NodeCrypto.KeyObject): NodeCrypto.KeyObject {
-
-    if (key instanceof NodeCrypto.KeyObject) {
-
-        return key;
-    }
-
-    try {
-
-        return NodeCrypto.createPublicKey(key);
-    }
-    catch (e) {
-
-        throw new eL.E_INVALID_KEY(eL.EErrorCode.INVALID_KEY_FORMAT, {}, e);
-    }
-}
-
 /**
- * The ECDSA JWT signer implementation.
+ * The signer using ECDSA algorithm, for JWT.
+ *
+ * @example
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const signer = new LibJWT.EcdsaJwaSigner({
+ *  privateKey: '-----BEGIN PRIVATE KEY-----\n...',
+ * });
+ * const token = await LibJWT.stringify({
+ *   payload: { foo: 'bar' },
+ *   signer: signer,
+ * });
+ * console.log(token);
+ * ```
  */
-export class EcdsaJwtSigner implements dL.IJwtSigner {
+export class EcdsaJwaSigner implements dL.IJwaSigner {
 
     public readonly family: cL.ESigningAlgoFamily = cL.ESigningAlgoFamily.ECDSA;
 
@@ -148,7 +130,7 @@ export class EcdsaJwtSigner implements dL.IJwtSigner {
     public constructor(opts: IEcdsaSignerOptions) {
 
         this.keyId = opts.keyId;
-        const key = preparePrivateKey(opts.privateKey);
+        const key = uL.preparePrivateKey(opts.privateKey);
         [this.jwa, this.digestType] = extractJwaFromKey(key, { private: true });
 
         this._signOpts = {
@@ -159,19 +141,37 @@ export class EcdsaJwtSigner implements dL.IJwtSigner {
 
     public sign(content: Buffer | string): Buffer {
 
-        return NodeCrypto.createSign(this.digestType)
-            .update(content)
-            .sign(this._signOpts);
+        const signer = uL.createSigner(this.digestType);
+
+        try {
+
+            return signer.update(content).sign(this._signOpts);
+        }
+        catch (e) {
+
+            throw new eL.E_SIGN_FAILED(eL.EErrorCode.SIGN_FAILED, {}, e);
+        }
     }
 }
 
 /**
- * The options for creating an ECDSA signature verifier for JWT.
+ * The options for creating an ECDSA signature validator for JWT.
  */
-export interface IEcdsaVerifierOptions {
+export interface IEcdsaValidatorOptions {
+
+    /**
+     * A custom name for this validator.
+     *
+     * @default 'EcdsaJwaVerifier'
+     */
+    'customName'?: string;
 
     /**
      * The public key to use for ECDSA signature verification.
+     * If a string is provided, it must be a PEM encoded EC public key.
+     *
+     * The digest algorithm and JWA will be inferred from the key, no need to
+     * specify them manually.
      */
     'publicKey': string | NodeCrypto.KeyObject;
 
@@ -184,12 +184,27 @@ export interface IEcdsaVerifierOptions {
 }
 
 /**
- * The ECDSA signature verifier implementation for JWT.
+ * The ECDSA signature validator implementation for JWT.
  *
- * This verifier class checks if the signature is valid.
+ * This validator class checks if the signature is valid.
  * It neither parses the JWT, nor validates the JWT token claims.
+ *
+ * @example
+ * ```ts
+ * import * as LibJWT from '@litert/jwt';
+ * const validator = new LibJWT.EcdsaJwaVerifier({
+ *    publicKey: '-----BEGIN PUBLIC KEY-----\n...',
+ * });
+ * const info = LibJWT.parse(token); // Signature is not verified here.
+ * const isValid = validator.validate(info);
+ * if (!isValid) {
+ *    throw new Error('Invalid signature');
+ * }
+ * ```
  */
-export class EcdsaJwtVerifier implements dL.IJwtValidator {
+export class EcdsaJwaVerifier implements dL.IJwtValidator {
+
+    public readonly name: string;
 
     /**
      * The signing algorithm family.
@@ -206,16 +221,21 @@ export class EcdsaJwtVerifier implements dL.IJwtValidator {
      */
     public readonly jwa: cL.ESigningJwa;
 
-    private readonly _digestType: cL.EDigestType;
+    /**
+     * The digest type to use for verification.
+     */
+    public readonly digestType: cL.EDigestType;
 
     private readonly _verifyOpts: NodeCrypto.VerifyKeyObjectInput;
 
-    public constructor(opts: IEcdsaVerifierOptions) {
+    public constructor(opts: IEcdsaValidatorOptions) {
+
+        this.name = opts.customName ?? EcdsaJwaVerifier.name;
 
         this.checkAlgClaim = opts.checkAlgClaim ?? true;
-        const key = preparePublicKey(opts.publicKey);
+        const key = uL.preparePublicKey(opts.publicKey);
 
-        [this.jwa, this._digestType] = extractJwaFromKey(key, {
+        [this.jwa, this.digestType] = extractJwaFromKey(key, {
             public: true,
             private: true, // Private key can also be used for verification
         });
@@ -226,19 +246,35 @@ export class EcdsaJwtVerifier implements dL.IJwtValidator {
         };
     }
 
-    public validate(data: dL.IJwtParseResult): boolean {
+    public validate(data: dL.IJwtParseResult): void {
 
         /**
          * The `alg` header claim is optional, do not check it unless it's
          * present.
          */
-        if ('alg' in data.header && data.header.alg !== this.jwa) {
+        if (this.checkAlgClaim && 'alg' in data.header && data.header.alg !== this.jwa) {
 
-            return false;
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_ALG_MISMATCH);
         }
 
-        return NodeCrypto.createVerify(this._digestType)
-            .update(data.signedContent)
-            .verify(this._verifyOpts, data.signature);
+        const verifier = uL.createVerifier(this.digestType);
+
+        let result: boolean;
+
+        try {
+
+            result = verifier
+                .update(data.signedContent)
+                .verify(this._verifyOpts, data.signature);
+        }
+        catch (e) {
+
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_VERIFY_FAILED, {}, e);
+        }
+
+        if (!result) {
+
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_VERIFY_FAILED);
+        }
     }
 }

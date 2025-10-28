@@ -2,7 +2,7 @@
 
 # Interface: IStringifyOptions
 
-Defined in: src/lib/CoreApis/Stringify.ts:22
+Defined in: [src/lib/CoreApis/Stringify.ts:23](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L23)
 
 The options for API `stringify`.
 
@@ -12,7 +12,7 @@ The options for API `stringify`.
 
 > `optional` **header**: `Partial`\<[`IJwtHeader`](../../../Types/interfaces/IJwtHeader.md)\>
 
-Defined in: src/lib/CoreApis/Stringify.ts:31
+Defined in: [src/lib/CoreApis/Stringify.ts:32](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L32)
 
 The JWT header to use.
 
@@ -26,7 +26,7 @@ allowed to be overridden.
 
 > **payload**: [`IJwtPayload`](../../../Types/interfaces/IJwtPayload.md)
 
-Defined in: src/lib/CoreApis/Stringify.ts:39
+Defined in: [src/lib/CoreApis/Stringify.ts:40](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L40)
 
 The JWT payload to use.
 
@@ -37,8 +37,8 @@ No default claims will be set.
 
 ### signer
 
-> **signer**: [`IJwtSigner`](../../../Types/interfaces/IJwtSigner.md)
+> **signer**: [`IJwaSigner`](../../../Types/interfaces/IJwaSigner.md)
 
-Defined in: src/lib/CoreApis/Stringify.ts:44
+Defined in: [src/lib/CoreApis/Stringify.ts:45](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L45)
 
 The signer to use for signing the JWT.

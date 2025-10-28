@@ -3,6 +3,9 @@
     "cSpell.words": [
         "EDDSA",
         "Hmac",
+        "PKCS",
+        "RSAPSS",
+        "RSASSA",
         "secp"
     ]
 }

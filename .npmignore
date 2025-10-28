@@ -19,3 +19,4 @@
 *.test.d.ts.map
 *.test.js
 *.test.js.map
+eslint.config.js
