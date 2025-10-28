@@ -2,6 +2,14 @@
 
 The `@litert/jwt` library provides two kinds of APIs for signing and verifying JWTs: core APIs and managed APIs.
 
+## Installation
+
+You can install the library via npm:
+
+```sh
+npm install @litert/jwt --save
+```
+
 ## Core APIs
 
 The core APIs are designed for quick and easy usage. They provide a straightforward way to sign and verify JWTs without requiring extensive configuration.
@@ -27,7 +35,7 @@ const jwt = JWT.stringify({
 console.log(jwt);
 ```
 
-See the [example code](/src/examples/quick-start-stringify.ts).
+See the [example code](https://github.com/litert/jwt.js/blob/master/src/examples/quick-start-stringify.ts).
 
 ### Parsing a JWT
 
@@ -65,7 +73,7 @@ catch (err) {
 }
 ```
 
-See the [example code](/src/examples/quick-start-parse.ts).
+See the [example code](https://github.com/litert/jwt.js/blob/master/src/examples/quick-start-parse.ts).
 
 ## Managed APIs
 
@@ -100,7 +108,7 @@ const token = builder
 console.log('Generated JWT:', token);
 ```
 
-See the [example code](/src/examples/quick-start-builder.ts).
+See the [example code](https://github.com/litert/jwt.js/blob/master/src/examples/quick-start-builder.ts).
 
 ### Verifying a JWT
 
@@ -137,4 +145,4 @@ catch (err) {
 }
 ```
 
-See the [example code](/src/examples/quick-start-verifier.ts).
+See the [example code](https://github.com/litert/jwt.js/blob/master/src/examples/quick-start-verifier.ts).

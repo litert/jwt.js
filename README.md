@@ -62,9 +62,9 @@ npm i @litert/jwt --save
 
 - [en-US](https://litert.org/projects/jwt.js/)
 
-    - [Quick Start](https://litert.org/projects/jwt.js/quick-start/)
-    - [FAQ](https://litert.org/projects/jwt.js/faq/)
-    - [API Reference](https://litert.org/projects/jwt.js/api-docs/)
+    - [Quick Start](https://litert.org/projects/jwt.js/guides/quick-start/)
+    - [FAQ](https://litert.org/projects/jwt.js/guides/faq/)
+    - [API Reference](https://litert.org/projects/jwt.js/api/)
 
 ## License
 
