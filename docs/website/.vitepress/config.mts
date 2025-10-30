@@ -6,6 +6,9 @@ export default defineConfig({
   title: "@litert/jwt",
   description: "The JWT implementation for Node.JS.",
   base: '/projects/jwt.js/',
+  sitemap: {
+    hostname: 'https://litert.org/projects/jwt.js/' // Replace with your actual domain
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

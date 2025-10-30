@@ -20,6 +20,7 @@ npx typedoc \
     --out api \
     --readme none \
     --name "Documents for @litert/jwt" \
+    --hostedBaseUrl "https://litert.org/projects/jwt.js" \
     --plugin typedoc-plugin-markdown \
     --plugin typedoc-vitepress-theme \
     --sourceLinkTemplate "https://github.com/litert/jwt.js/blob/master/{path}#L{line}" \
