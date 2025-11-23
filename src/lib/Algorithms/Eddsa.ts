@@ -238,9 +238,7 @@ export class EddsaJwaVerifier implements dL.IJwtValidator {
 
             result = NodeCrypto.verify(
                 null,
-                typeof data.signedContent === 'string' ?
-                    Buffer.from(data.signedContent, 'utf-8') :
-                    data.signedContent,
+                Buffer.from(data.signedContent, 'utf-8'),
                 this._key,
                 data.signature,
             );
