@@ -20,7 +20,7 @@ npm i @litert/jwt --save
 
 - ✔️ All mainly signing JWA algorithms are supported。
 
-    RSA       | HMAC      | ECDSA      | EdDSA       | ML-DAS
+    RSA       | HMAC      | ECDSA      | EdDSA       | ML-DSA
     :--------:|:---------:|:----------:|:-----------:|:---------:
     ![RS256](https://badgen.net/badge/alg/RS256?color=green) | ![HS256](https://badgen.net/badge/alg/HS256?color=green) | ![ES256](https://badgen.net/badge/alg/ES256?color=green)  | ![Ed25519](https://badgen.net/badge/curve/Ed25519?color=green) | ![ML-DSA-44](https://badgen.net/badge/alg/ML-DSA-44?color=green)
     ![RS384](https://badgen.net/badge/alg/RS384?color=green) | ![HS384](https://badgen.net/badge/alg/HS384?color=green) | ![ES384](https://badgen.net/badge/alg/ES384?color=green)  | ![Ed448](https://badgen.net/badge/curve/Ed448?color=green) | ![ML-DSA-65](https://badgen.net/badge/alg/ML-DSA-65?color=green)
