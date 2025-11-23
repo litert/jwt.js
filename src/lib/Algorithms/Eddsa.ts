@@ -226,7 +226,10 @@ export class EddsaJwaVerifier implements dL.IJwtValidator {
          */
         if (this.checkAlgClaim && 'alg' in data.header && data.header.alg !== this.jwa) {
 
-            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_ALG_MISMATCH);
+            throw new eL.E_VERIFY_FAILED(eL.EErrorCode.SIGNATURE_ALG_MISMATCH, {
+                'expected': this.jwa,
+                'actual': data.header.alg,
+            });
         }
 
         let result: boolean;
