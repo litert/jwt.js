@@ -24,6 +24,9 @@ JWA Algorithm | Key Type               | Key Format           | Key Size (recomm
 `ES512`       | EC Public/Private Key  | PEM or DER encoded SEC1 or PKCS#8, using `P-521` curve (`secp521r1`, 521 bits) | N/A
 `ES256K`      | EC Public/Private Key  | PEM or DER encoded SEC1 or PKCS#8, using `secp256k1` curve (256 bits) | N/A
 `EdDSA`      | EdDSA Public/Private Key | PEM or DER encoded PKCS#8, only `Ed25519` or `Ed448` are supported | N/A
+`ML-DSA-44`  | ML-DSA Public/Private Key | PEM or DER encoded PKCS#8, using `ML-DSA-44` | N/A
+`ML-DSA-65`  | ML-DSA Public/Private Key | PEM or DER encoded PKCS#8, using `ML-DSA-65` | N/A
+`ML-DSA-87`  | ML-DSA Public/Private Key | PEM or DER encoded PKCS#8, using `ML-DSA-87` | N/A
 
 ## How to use RSA-PSS with this library?
 

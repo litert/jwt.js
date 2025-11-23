@@ -16,7 +16,7 @@ Other claims.
 
 ### alg
 
-> **alg**: `"RS256"` \| `"RS384"` \| `"RS512"` \| `"PS256"` \| `"PS384"` \| `"PS512"` \| `"HS256"` \| `"HS384"` \| `"HS512"` \| `"ES256"` \| `"ES256K"` \| `"ES384"` \| `"ES512"` \| `"EdDSA"`
+> **alg**: `"RS256"` \| `"RS384"` \| `"RS512"` \| `"PS256"` \| `"PS384"` \| `"PS512"` \| `"HS256"` \| `"HS384"` \| `"HS512"` \| `"ES256"` \| `"ES256K"` \| `"ES384"` \| `"ES512"` \| `"EdDSA"` \| `"ML-DSA-44"` \| `"ML-DSA-65"` \| `"ML-DSA-87"`
 
 Defined in: [src/lib/Types.ts:46](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L46)
 

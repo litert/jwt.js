@@ -2,7 +2,7 @@
 
 # Enumeration: ESigningJwa
 
-Defined in: [src/lib/Constants.ts:214](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L214)
+Defined in: [src/lib/Constants.ts:228](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L228)
 
 The JWA algorithms for signing JWTs, using in the `alg` claim.
 
@@ -12,7 +12,7 @@ The JWA algorithms for signing JWTs, using in the `alg` claim.
 
 > **EDDSA**: `"EdDSA"`
 
-Defined in: [src/lib/Constants.ts:288](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L288)
+Defined in: [src/lib/Constants.ts:302](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L302)
 
 EdDSA (Edwards-curve Digital Signature Algorithm) using curves like
 `Ed25519`, `Ed448`.
@@ -23,7 +23,7 @@ EdDSA (Edwards-curve Digital Signature Algorithm) using curves like
 
 > **ES256**: `"ES256"`
 
-Defined in: [src/lib/Constants.ts:265](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L265)
+Defined in: [src/lib/Constants.ts:279](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L279)
 
 ECDSA using `P-256` (also known as `secp256r1`) curve and SHA-256 digest
 algorithm.
@@ -34,7 +34,7 @@ algorithm.
 
 > **ES256K**: `"ES256K"`
 
-Defined in: [src/lib/Constants.ts:270](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L270)
+Defined in: [src/lib/Constants.ts:284](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L284)
 
 ECDSA using `secp256k1` curve and SHA-256 digest algorithm.
 
@@ -44,7 +44,7 @@ ECDSA using `secp256k1` curve and SHA-256 digest algorithm.
 
 > **ES384**: `"ES384"`
 
-Defined in: [src/lib/Constants.ts:276](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L276)
+Defined in: [src/lib/Constants.ts:290](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L290)
 
 ECDSA using `P-384` (also known as `secp384r1`) curve and SHA-384 digest
 algorithm.
@@ -55,7 +55,7 @@ algorithm.
 
 > **ES512**: `"ES512"`
 
-Defined in: [src/lib/Constants.ts:282](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L282)
+Defined in: [src/lib/Constants.ts:296](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L296)
 
 ECDSA using `P-521` (also known as `secp521r1`) curve and SHA-512 digest
 algorithm.
@@ -66,7 +66,7 @@ algorithm.
 
 > **HS256**: `"HS256"`
 
-Defined in: [src/lib/Constants.ts:249](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L249)
+Defined in: [src/lib/Constants.ts:263](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L263)
 
 HMAC using SHA-256 hash algorithm.
 
@@ -76,7 +76,7 @@ HMAC using SHA-256 hash algorithm.
 
 > **HS384**: `"HS384"`
 
-Defined in: [src/lib/Constants.ts:254](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L254)
+Defined in: [src/lib/Constants.ts:268](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L268)
 
 HMAC using SHA-384 hash algorithm.
 
@@ -86,9 +86,87 @@ HMAC using SHA-384 hash algorithm.
 
 > **HS512**: `"HS512"`
 
-Defined in: [src/lib/Constants.ts:259](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L259)
+Defined in: [src/lib/Constants.ts:273](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L273)
 
 HMAC using SHA-512 hash algorithm.
+
+***
+
+### MLDSA44
+
+> **MLDSA44**: `"ML-DSA-44"`
+
+Defined in: [src/lib/Constants.ts:316](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L316)
+
+**`Experimental`**
+
+ML-DSA-44
+
+> The support for ML-DSA is experimental and may change in future releases.
+
+#### Link
+
+https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.htm
+
+#### Since
+
+v0.1.2
+
+#### Requires
+
+Node.js v24.6.0
+
+***
+
+### MLDSA65
+
+> **MLDSA65**: `"ML-DSA-65"`
+
+Defined in: [src/lib/Constants.ts:330](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L330)
+
+**`Experimental`**
+
+ML-DSA-65
+
+> The support for ML-DSA is experimental and may change in future releases.
+
+#### Link
+
+https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+
+#### Since
+
+v0.1.2
+
+#### Requires
+
+Node.js v24.6.0
+
+***
+
+### MLDSA87
+
+> **MLDSA87**: `"ML-DSA-87"`
+
+Defined in: [src/lib/Constants.ts:344](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L344)
+
+**`Experimental`**
+
+ML-DSA-87
+
+> The support for ML-DSA is experimental and may change in future releases.
+
+#### Link
+
+https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+
+#### Since
+
+v0.1.2
+
+#### Requires
+
+Node.js v24.6.0
 
 ***
 
@@ -96,7 +174,7 @@ HMAC using SHA-512 hash algorithm.
 
 > **PS256**: `"PS256"`
 
-Defined in: [src/lib/Constants.ts:234](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L234)
+Defined in: [src/lib/Constants.ts:248](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L248)
 
 RSASSA-PSS using SHA-256 hash algorithm.
 
@@ -106,7 +184,7 @@ RSASSA-PSS using SHA-256 hash algorithm.
 
 > **PS384**: `"PS384"`
 
-Defined in: [src/lib/Constants.ts:239](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L239)
+Defined in: [src/lib/Constants.ts:253](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L253)
 
 RSASSA-PSS using SHA-384 hash algorithm.
 
@@ -116,7 +194,7 @@ RSASSA-PSS using SHA-384 hash algorithm.
 
 > **PS512**: `"PS512"`
 
-Defined in: [src/lib/Constants.ts:244](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L244)
+Defined in: [src/lib/Constants.ts:258](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L258)
 
 RSASSA-PSS using SHA-512 hash algorithm.
 
@@ -126,7 +204,7 @@ RSASSA-PSS using SHA-512 hash algorithm.
 
 > **RS256**: `"RS256"`
 
-Defined in: [src/lib/Constants.ts:219](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L219)
+Defined in: [src/lib/Constants.ts:233](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L233)
 
 RSASSA-PKCS1-v1_5 using SHA-256 hash algorithm.
 
@@ -136,7 +214,7 @@ RSASSA-PKCS1-v1_5 using SHA-256 hash algorithm.
 
 > **RS384**: `"RS384"`
 
-Defined in: [src/lib/Constants.ts:224](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L224)
+Defined in: [src/lib/Constants.ts:238](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L238)
 
 RSASSA-PKCS1-v1_5 using SHA-384 hash algorithm.
 
@@ -146,6 +224,6 @@ RSASSA-PKCS1-v1_5 using SHA-384 hash algorithm.
 
 > **RS512**: `"RS512"`
 
-Defined in: [src/lib/Constants.ts:229](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L229)
+Defined in: [src/lib/Constants.ts:243](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L243)
 
 RSASSA-PKCS1-v1_5 using SHA-512 hash algorithm.

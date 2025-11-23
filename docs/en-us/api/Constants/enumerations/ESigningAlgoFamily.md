@@ -54,6 +54,32 @@ https://datatracker.ietf.org/doc/html/rfc7518#section-3.2
 
 ***
 
+### MLDSA
+
+> **MLDSA**: `4`
+
+Defined in: [src/lib/Constants.ts:215](https://github.com/litert/jwt.js/blob/master/src/lib/Constants.ts#L215)
+
+**`Experimental`**
+
+Use the ML-DSA algorithm for signing.
+
+> The support for ML-DSA is experimental and may change in future releases.
+
+#### Link
+
+https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+
+#### Since
+
+v0.1.2
+
+#### Requires
+
+Node.js v24.6.0
+
+***
+
 ### RSA
 
 > **RSA**: `0`

@@ -178,6 +178,18 @@ Re-exports [IJwtVerifierOptions](../ManagedApis/Verifier/interfaces/IJwtVerifier
 
 ***
 
+### IMldsaSignerOptions
+
+Re-exports [IMldsaSignerOptions](../Algorithms/Mldsa/interfaces/IMldsaSignerOptions.md)
+
+***
+
+### IMldsaValidatorOptions
+
+Re-exports [IMldsaValidatorOptions](../Algorithms/Mldsa/interfaces/IMldsaValidatorOptions.md)
+
+***
+
 ### IRsaSignerOptions
 
 Re-exports [IRsaSignerOptions](../Algorithms/Rsa/interfaces/IRsaSignerOptions.md)
@@ -259,6 +271,18 @@ Re-exports [JwtTimeValidityValidator](../Validators/TimeValidity/classes/JwtTime
 ### JwtVerifier
 
 Re-exports [JwtVerifier](../ManagedApis/Verifier/classes/JwtVerifier.md)
+
+***
+
+### MldsaJwaSigner
+
+Re-exports [MldsaJwaSigner](../Algorithms/Mldsa/classes/MldsaJwaSigner.md)
+
+***
+
+### MldsaJwaVerifier
+
+Re-exports [MldsaJwaVerifier](../Algorithms/Mldsa/classes/MldsaJwaVerifier.md)
 
 ***
 

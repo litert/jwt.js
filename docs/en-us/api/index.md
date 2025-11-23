@@ -5,6 +5,7 @@
 - [Algorithms/Ecdsa](Algorithms/Ecdsa/index.md)
 - [Algorithms/Eddsa](Algorithms/Eddsa/index.md)
 - [Algorithms/Hmac](Algorithms/Hmac/index.md)
+- [Algorithms/Mldsa](Algorithms/Mldsa/index.md)
 - [Algorithms/Rsa](Algorithms/Rsa/index.md)
 - [Constants](Constants/index.md)
 - [CoreApis/Parse](CoreApis/Parse/index.md)
