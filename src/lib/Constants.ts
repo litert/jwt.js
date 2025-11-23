@@ -201,6 +201,20 @@ export enum ESigningAlgoFamily {
     EDDSA,
 
     /**
+     * Use the ML-DSA algorithm for signing.
+     *
+     * > The support for ML-DSA is experimental and may change in future releases.
+     *
+     * @link https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+     *
+     * @experimental
+     *
+     * @since v0.1.2
+     * @requires Node.js v24.6.0
+     */
+    MLDSA,
+
+    /**
      * @link https://datatracker.ietf.org/doc/html/draft-chen-sm2-sm3-algorithms-04#section-3.1.1
      *
      * @todo Not implemented yet.
@@ -288,6 +302,48 @@ export enum ESigningJwa {
     EDDSA = 'EdDSA',
 
     /**
+     * ML-DSA-44
+     *
+     * > The support for ML-DSA is experimental and may change in future releases.
+     *
+     * @link https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.htm
+     *
+     * @experimental
+     *
+     * @since v0.1.2
+     * @requires Node.js v24.6.0
+     */
+    MLDSA44 = 'ML-DSA-44',
+
+    /**
+     * ML-DSA-65
+     *
+     * > The support for ML-DSA is experimental and may change in future releases.
+     *
+     * @link https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+     *
+     * @experimental
+     *
+     * @since v0.1.2
+     * @requires Node.js v24.6.0
+     */
+    MLDSA65 = 'ML-DSA-65',
+
+    /**
+     * ML-DSA-87
+     *
+     * > The support for ML-DSA is experimental and may change in future releases.
+     *
+     * @link https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html
+     *
+     * @experimental
+     *
+     * @since v0.1.2
+     * @requires Node.js v24.6.0
+     */
+    MLDSA87 = 'ML-DSA-87',
+
+    /**
      * SM2 signature algorithm with SM3 hash algorithm.
      *
      * @link https://datatracker.ietf.org/doc/html/draft-chen-sm2-sm3-algorithms-04#section-3.1.1
@@ -323,4 +379,11 @@ export enum EDigestType {
      * don't use it for other purposes.
      */
     SHAKE256 = 'shake256',
+
+    /**
+     * Automatically select the digest algorithm based on the key and algorithm.
+     *
+     * @since v0.1.2
+     */
+    AUTO = 'auto',
 }

@@ -22,6 +22,7 @@ export * as Errors from './Errors';
 export * from './Algorithms/Hmac';
 export * from './Algorithms/Ecdsa';
 export * from './Algorithms/Eddsa';
+export * from './Algorithms/Mldsa';
 export * from './Algorithms/Rsa';
 export * from './Validators/Audience';
 export * from './Validators/Issuer';

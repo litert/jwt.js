@@ -132,3 +132,5 @@ for curve in ed25519 ed448; do
 
     done
 done
+
+node $SCRIPT_ROOT/generate-mldsa-keys.js

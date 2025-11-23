@@ -43,7 +43,7 @@ export interface IJwtHeader {
      * @link https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
      * @required
      */
-    'alg': `${'HS' | 'RS' | 'PS' | 'ES'}${'256' | '384' | '512'}` | 'EdDSA' | 'ES256K';
+    'alg': `${'HS' | 'RS' | 'PS' | 'ES'}${'256' | '384' | '512'}` | 'EdDSA' | 'ES256K' | `ML-DSA-${'44' | '65' | '87'}`;
 
     /**
      * The "typ" (type) Header Parameter defined by JWS and JWE is used
