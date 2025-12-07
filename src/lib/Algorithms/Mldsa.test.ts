@@ -23,7 +23,7 @@ import { MldsaJwaSigner, MldsaJwaVerifier } from './Mldsa';
 
 NodeTest.describe('JWA ML-DSA', () => {
 
-    for (const alg of ['ml-dsa-44', 'ml-dsa-65', 'ml-dsa-87'] as const) {
+    for (const alg of ['ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87'] as const) {
 
         const jwaName = alg.toUpperCase();
 
@@ -230,9 +230,9 @@ NodeTest.describe('JWA ML-DSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ml-dsa-44.pub.pem`,
-            `${__dirname}/../../test-data/ok-ml-dsa-65.pub.pem`,
-            `${__dirname}/../../test-data/ok-ml-dsa-87.pub.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-65.pub.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-87.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -248,9 +248,9 @@ NodeTest.describe('JWA ML-DSA', () => {
 
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ml-dsa-44.p8.pem`,
-            `${__dirname}/../../test-data/ok-ml-dsa-65.p8.pem`,
-            `${__dirname}/../../test-data/ok-ml-dsa-87.p8.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-65.p8.pem`,
+            `${__dirname}/../../test-data/ok-ML-DSA-87.p8.pem`,
         ]) {
 
             NodeAssert.doesNotThrow(() => {
@@ -267,7 +267,7 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-44.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
             }).sign(true as any);
         }, {
             name: 'sign_failed',
@@ -280,13 +280,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: true as any,
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-44.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -300,13 +300,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-ml-dsa-44.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-ML-DSA-44.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -317,13 +317,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ml-dsa-65.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-65.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {

@@ -133,4 +133,24 @@ for curve in ed25519 ed448; do
     done
 done
 
-node $SCRIPT_ROOT/generate-mldsa-keys.js
+for key_size in 44 65 87; do
+
+    echo "Generating ML-DSA key pair for ${curve}..."
+
+    for key_tag in ok err; do
+
+        # Generate the private key in PEM format
+        openssl genpkey -algorithm ML-DSA-$key_size -out $OUT_DIR/${key_tag}-ML-DSA-$key_size.p8.pem
+
+        # Extract the public key from the private key, in PEM format
+        openssl pkey -in $OUT_DIR/${key_tag}-ML-DSA-$key_size.p8.pem -pubout -out $OUT_DIR/${key_tag}-ML-DSA-$key_size.pub.pem
+
+        # Extract the public key from the private key, in DER format
+        openssl pkey -in $OUT_DIR/${key_tag}-ML-DSA-$key_size.p8.pem -pubout -out $OUT_DIR/${key_tag}-ML-DSA-$key_size.pub.der -outform DER
+
+        # Convert the private key to DER format
+        openssl pkey -in $OUT_DIR/${key_tag}-ML-DSA-$key_size.p8.pem -outform DER -out $OUT_DIR/${key_tag}-ML-DSA-$key_size.p8.der
+    done
+done
+
+# node $SCRIPT_ROOT/generate-mldsa-keys.js

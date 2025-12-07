@@ -20,9 +20,9 @@ import * as NodeFS from 'node:fs';
 const KEY_DIR = `${__dirname}/../test-data`;
 
 for (const k of [
-    'ml-dsa-44',
-    'ml-dsa-65',
-    'ml-dsa-87',
+    'ML-DSA-44',
+    'ML-DSA-65',
+    'ML-DSA-87',
 ] as const) {
 
     const okKeyId = `ok-${k}`;
