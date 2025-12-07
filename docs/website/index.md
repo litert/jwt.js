@@ -19,5 +19,6 @@ features:
     details: Easy to use and integrate JWT functionalities.
   - title: Full JWA Support
     details: Supports all signing algorithms defined in JWA.
+  - title: Advanced Features
+    details: Supports advanced algorithms like EdDSA, ML-DSA.
 ---
-

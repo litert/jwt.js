@@ -137,3 +137,80 @@ const verifier = new JWT.RsaJwaVerifier({
     'digestType': JWT.EDigestType.SHA256,
 });
 ```
+
+## How to use ML-DSA algorithms with this library?
+
+ML-DSA (Multi-Layered Digital Signature Algorithm) is a post-quantum signature algorithm that provides enhanced security against quantum attacks.
+This library supports ML-DSA algorithms `ML-DSA-44`, `ML-DSA-65`, and `ML-DSA-87` for signing and verifying JWTs.
+
+> Click to see more details about ML-DSA: [ML-DSA on IETF](https://www.ietf.org/archive/id/draft-salter-lamps-cms-ml-dsa-00.html).
+
+To use ML-DSA algorithms with this library, you need to generate an ML-DSA key pair first.
+
+```sh
+# Using OpenSSL with ML-DSA support, generate an ML-DSA-44 key pair
+openssl genpkey -algorithm ML-DSA-44 -out ml-dsa-private-key.pem
+openssl pkey -in ml-dsa-private-key.pem -pubout -out ml-dsa-public-key.pem
+```
+
+> Of course you can also use `node:crypto` module to generate ML-DSA key pairs programmatically, here is an example:
+>
+> ```ts
+> import * as NodeCrypto from 'node:crypto';
+> const { privateKey, publicKey } = crypto.generateKeyPairSync('ml-dsa-44', {
+>     publicKeyEncoding: {
+>         type: 'spki',
+>         format: 'pem'
+>     },
+>     privateKeyEncoding: {
+>         type: 'pkcs8',
+>         format: 'pem'
+>     }
+> });
+> ```
+>
+> Here you got `privateKey` and `publicKey` in PEM format.
+
+After generating key pairs, you can use `MldsaJwaSigner` class to sign and verify JWTs:
+
+```ts
+import * as LibJwt from '@litert/jwt';
+import * as NodeFS from 'node:fs';
+
+const signer = new LibJwt.MldsaJwaSigner({
+    'privateKey': NodeFS.readFileSync('ml-dsa-44.pem', 'utf-8'),
+    'keyId': 'my-key-id'
+});
+
+const token = LibJwt.stringify({
+    'header': {
+        'alg': signer.jwa,
+        'kid': signer.keyId ?? undefined
+    },
+    'payload': {
+        'sub': '1234567890',
+        'name': 'John Doe',
+        'iat': 1516239022
+    },
+    'signer': signer
+});
+
+console.log(`Token: ${token}`);
+```
+
+Or decode and verify the JWT using `MldsaJwaVerifier` class:
+
+```ts
+import * as LibJwt from '@litert/jwt';
+import * as NodeFS from 'node:fs';
+
+const verifier = new LibJwt.MldsaJwaVerifier({
+    'publicKey': NodeFS.readFileSync('ml-dsa-44.pub', 'utf-8')
+});
+
+const result = LibJwt.parse(token);
+
+verifier.validate(result);
+
+console.log(result);
+```
