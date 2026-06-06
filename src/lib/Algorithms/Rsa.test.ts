@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeFS from 'node:fs';
 import * as NodeAssert from 'node:assert';
-import * as eL from '../Errors';
-import * as cL from '../Constants';
-import { RsaJwaSigner, RsaJwaVerifier } from './Rsa';
+import * as eL from '../Errors.js';
+import * as cL from '../Constants.js';
+import { RsaJwaSigner, RsaJwaVerifier } from './Rsa.js';
 
 NodeTest.describe('JWA RSA', () => {
 
@@ -28,7 +28,7 @@ NodeTest.describe('JWA RSA', () => {
 
         NodeAssert.strictEqual(new RsaJwaVerifier({
             publicKey: NodeFS.readFileSync(
-                `${__dirname}/../../test-data/ok-RS256.pub.pem`,
+                `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
                 'utf-8',
             ),
             digestType: cL.EDigestType.SHA256,
@@ -39,7 +39,7 @@ NodeTest.describe('JWA RSA', () => {
 
         NodeAssert.strictEqual(new RsaJwaVerifier({
             publicKey: NodeFS.readFileSync(
-                `${__dirname}/../../test-data/ok-RS256.pub.pem`,
+                `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
                 'utf-8',
             ),
             customName: 'CustomVerifierName',
@@ -50,11 +50,11 @@ NodeTest.describe('JWA RSA', () => {
     for (const alg of ['RS256', 'RS384', 'RS512', 'PS256', 'PS384', 'PS512'] as const) {
 
         const privKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.p8.pem`,
             'utf-8',
         );
         const pubKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.pub.pem`,
             'utf-8',
         );
 
@@ -210,9 +210,9 @@ NodeTest.describe('JWA RSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ES256.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES384.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES512.p8.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -228,9 +228,9 @@ NodeTest.describe('JWA RSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ES256.pub.pem`,
-            `${__dirname}/../../test-data/ok-ES384.pub.pem`,
-            `${__dirname}/../../test-data/ok-ES512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES512.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -246,9 +246,9 @@ NodeTest.describe('JWA RSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -264,12 +264,12 @@ NodeTest.describe('JWA RSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS512.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS256.p1.pem`,
-            `${__dirname}/../../test-data/ok-RS384.p1.pem`,
-            `${__dirname}/../../test-data/ok-RS512.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.p1.pem`,
         ]) {
 
             NodeAssert.doesNotThrow(() => {
@@ -284,7 +284,7 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ES-unk.p1.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ES-unk.p1.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
             });
         }, {
@@ -298,7 +298,7 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-PS256.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-PS256.p8.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
                 usePssPadding: false,
             });
@@ -313,8 +313,8 @@ NodeTest.describe('JWA RSA', () => {
         for (const d of [256, 384, 512] as const) {
 
             for (const k of [
-                `${__dirname}/../../test-data/ok-RS${d}.p8.pem`,
-                `${__dirname}/../../test-data/ok-RS${d}.p1.pem`,
+                `${import.meta.dirname}/../../test-data/ok-RS${d}.p8.pem`,
+                `${import.meta.dirname}/../../test-data/ok-RS${d}.p1.pem`,
             ]) {
 
                 NodeAssert.strictEqual(
@@ -333,7 +333,7 @@ NodeTest.describe('JWA RSA', () => {
 
         NodeAssert.throws(() => {
             new RsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
                 digestType: 'SHAKE256' as any,
             });
         }, {
@@ -345,8 +345,8 @@ NodeTest.describe('JWA RSA', () => {
     NodeTest.it(`should not use PSS algorithm if usePssPadding is false with non-PSS key`, () => {
 
         for (const k of [
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS256.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p1.pem`,
         ]) {
 
             NodeAssert.strictEqual(
@@ -373,7 +373,7 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
             }).sign(true as any);
         }, {
@@ -387,14 +387,14 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
             }).validate({
                 header: { 'alg': 'RS256' },
                 payload: { data: 'test' },
                 signedContent: true as any,
                 signature: new RsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`, 'utf-8'),
                     digestType: cL.EDigestType.SHA256,
                 }).sign('test-signature'),
             });
@@ -409,14 +409,14 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
             }).validate({
                 header: { 'alg': 'RS256' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new RsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-RS256.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/err-RS256.p8.pem`, 'utf-8'),
                     digestType: cL.EDigestType.SHA256,
                 }).sign('test-signature'),
             });
@@ -428,7 +428,7 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
                 checkAlgClaim: false,
             }).validate({
@@ -436,7 +436,7 @@ NodeTest.describe('JWA RSA', () => {
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new RsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS512.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS512.p8.pem`, 'utf-8'),
                     digestType: cL.EDigestType.SHA256,
                 }).sign('test-signature'),
             });
@@ -448,7 +448,7 @@ NodeTest.describe('JWA RSA', () => {
         NodeAssert.throws(() => {
 
             new RsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`, 'utf-8'),
                 digestType: cL.EDigestType.SHA256,
                 checkAlgClaim: false,
             }).validate({
@@ -456,7 +456,7 @@ NodeTest.describe('JWA RSA', () => {
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new RsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-PS512.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-PS512.p8.pem`, 'utf-8'),
                     digestType: cL.EDigestType.SHA512,
                 }).sign('test-signature'),
             });
@@ -480,7 +480,7 @@ NodeTest.describe('JWA RSA', () => {
 
                     new RsaJwaVerifier({
                         publicKey: NodeFS.readFileSync(
-                            `${__dirname}/../../test-data/ok-PS${k}.p8.pem`,
+                            `${import.meta.dirname}/../../test-data/ok-PS${k}.p8.pem`,
                             'utf-8',
                         ),
                         digestType: cL.EDigestType[`SHA${d}`],

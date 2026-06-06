@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,16 @@
  * limitations under the License.
  */
 
-import type * as cL from './Constants';
-import type * as uT from '@litert/utils-ts-types';
+import type * as cL from './Constants.js';
+
+/**
+ * The type of the JSON field value, which can be a string,
+ * number, boolean, null, an array of JSON field values, or
+ * an object with string keys and JSON field values.
+ */
+export type IJsonFieldValue = string | number | boolean | null | IJsonFieldValue[] | {
+    [key: string]: IJsonFieldValue;
+};
 
 /**
  * The structure of JWT Header.
@@ -217,7 +225,7 @@ export interface IJwtHeader {
     /**
      * Other claims.
      */
-    [key: string]: uT.IJsonSafeValue | undefined;
+    [key: string]: IJsonFieldValue | undefined;
 }
 
 /**
@@ -340,7 +348,7 @@ export interface IJwtPayload {
     /**
      * Other claims.
      */
-    [key: string]: uT.IJsonSafeValue | undefined;
+    [key: string]: IJsonFieldValue | undefined;
 }
 
 /**

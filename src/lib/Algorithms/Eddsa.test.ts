@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,19 +18,19 @@ import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeFS from 'node:fs';
 import * as NodeAssert from 'node:assert';
-import * as eL from '../Errors';
-import { EddsaJwaSigner, EddsaJwaVerifier } from './Eddsa';
+import * as eL from '../Errors.js';
+import { EddsaJwaSigner, EddsaJwaVerifier } from './Eddsa.js';
 
 NodeTest.describe('JWA EdDSA', () => {
 
     for (const alg of ['ed448', 'ed25519'] as const) {
 
         const privKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.p8.pem`,
             'utf-8',
         );
         const pubKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.pub.pem`,
             'utf-8',
         );
 
@@ -185,12 +185,12 @@ NodeTest.describe('JWA EdDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS512.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.p8.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -205,13 +205,13 @@ NodeTest.describe('JWA EdDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS512.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS512.pub.pem`,
-            `${__dirname}/../../test-data/ok-x25519.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-x25519.p8.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -226,8 +226,8 @@ NodeTest.describe('JWA EdDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ed25519.pub.pem`,
-            `${__dirname}/../../test-data/ok-ed448.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed25519.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed448.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -243,8 +243,8 @@ NodeTest.describe('JWA EdDSA', () => {
 
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ed25519.p8.pem`,
-            `${__dirname}/../../test-data/ok-ed448.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed25519.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed448.p8.pem`,
         ]) {
 
             NodeAssert.doesNotThrow(() => {
@@ -261,7 +261,7 @@ NodeTest.describe('JWA EdDSA', () => {
         NodeAssert.throws(() => {
 
             new EddsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed25519.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed25519.p8.pem`, 'utf-8'),
             }).sign(true as any);
         }, {
             name: 'sign_failed',
@@ -274,13 +274,13 @@ NodeTest.describe('JWA EdDSA', () => {
         NodeAssert.throws(() => {
 
             new EddsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'EdDSA' },
                 payload: { data: 'test' },
                 signedContent: true as any,
                 signature: new EddsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed25519.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed25519.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -294,13 +294,13 @@ NodeTest.describe('JWA EdDSA', () => {
         NodeAssert.throws(() => {
 
             new EddsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'EdDSA' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new EddsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-ed25519.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/err-ed25519.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -311,13 +311,13 @@ NodeTest.describe('JWA EdDSA', () => {
         NodeAssert.throws(() => {
 
             new EddsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed25519.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'EdDSA' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new EddsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ed448.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ed448.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {

@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeFS from 'node:fs';
 import * as NodeAssert from 'node:assert';
-import * as eL from '../Errors';
-import { EcdsaJwaSigner, EcdsaJwaVerifier } from './Ecdsa';
+import * as eL from '../Errors.js';
+import { EcdsaJwaSigner, EcdsaJwaVerifier } from './Ecdsa.js';
 
 NodeTest.describe('JWA ECDSA', () => {
 
@@ -27,7 +27,7 @@ NodeTest.describe('JWA ECDSA', () => {
 
         NodeAssert.strictEqual(new EcdsaJwaVerifier({
             publicKey: NodeFS.readFileSync(
-                `${__dirname}/../../test-data/ok-ES256.pub.pem`,
+                `${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`,
                 'utf-8',
             ),
         }).name, EcdsaJwaVerifier.name);
@@ -37,7 +37,7 @@ NodeTest.describe('JWA ECDSA', () => {
 
         NodeAssert.strictEqual(new EcdsaJwaVerifier({
             publicKey: NodeFS.readFileSync(
-                `${__dirname}/../../test-data/ok-ES256.pub.pem`,
+                `${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`,
                 'utf-8',
             ),
             customName: 'CustomVerifierName',
@@ -47,11 +47,11 @@ NodeTest.describe('JWA ECDSA', () => {
     for (const alg of ['ES256', 'ES384', 'ES512', 'ES256K'] as const) {
 
         const privKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.p8.pem`,
             'utf-8',
         );
         const pubKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.pub.pem`,
             'utf-8',
         );
 
@@ -199,12 +199,12 @@ NodeTest.describe('JWA ECDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS512.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.p8.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -219,12 +219,12 @@ NodeTest.describe('JWA ECDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS512.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -239,10 +239,10 @@ NodeTest.describe('JWA ECDSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ES256.pub.pem`,
-            `${__dirname}/../../test-data/ok-ES256K.pub.pem`,
-            `${__dirname}/../../test-data/ok-ES384.pub.pem`,
-            `${__dirname}/../../test-data/ok-ES512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256K.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES512.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -258,14 +258,14 @@ NodeTest.describe('JWA ECDSA', () => {
 
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ES256.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES256K.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES384.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES512.p8.pem`,
-            `${__dirname}/../../test-data/ok-ES256.p1.pem`,
-            `${__dirname}/../../test-data/ok-ES256K.p1.pem`,
-            `${__dirname}/../../test-data/ok-ES384.p1.pem`,
-            `${__dirname}/../../test-data/ok-ES512.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256K.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES256K.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES384.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ES512.p1.pem`,
         ]) {
 
             NodeAssert.doesNotThrow(() => {
@@ -279,7 +279,7 @@ NodeTest.describe('JWA ECDSA', () => {
         NodeAssert.throws(() => {
 
             new EcdsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ES-unk.p1.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ES-unk.p1.pem`, 'utf-8'),
             });
         }, {
             name: 'invalid_settings',
@@ -292,7 +292,7 @@ NodeTest.describe('JWA ECDSA', () => {
         NodeAssert.throws(() => {
 
             new EcdsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES256.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES256.p8.pem`, 'utf-8'),
             }).sign(true as any);
         }, {
             name: 'sign_failed',
@@ -305,13 +305,13 @@ NodeTest.describe('JWA ECDSA', () => {
         NodeAssert.throws(() => {
 
             new EcdsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ES256' },
                 payload: { data: 'test' },
                 signedContent: true as any,
                 signature: new EcdsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES256.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES256.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -325,13 +325,13 @@ NodeTest.describe('JWA ECDSA', () => {
         NodeAssert.throws(() => {
 
             new EcdsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ES256' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new EcdsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-ES256.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/err-ES256.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -342,14 +342,14 @@ NodeTest.describe('JWA ECDSA', () => {
         NodeAssert.throws(() => {
 
             new EcdsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES256.pub.pem`, 'utf-8'),
                 checkAlgClaim: false,
             }).validate({
                 header: { 'alg': 'ES256' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new EcdsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ES512.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ES512.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {

@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,12 @@
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
 import * as NodeTimers from 'node:timers/promises';
-import type * as dL from '../Types';
-import * as eL from '../Errors';
-import * as cL from '../Constants';
-import { JwtAsyncVerifier, JwtVerifier } from './Verifier';
-import { stringify } from '../CoreApis/Stringify';
-import { JwtAudienceValidator } from '../Validators/Audience';
+import type * as dL from '../Types.js';
+import * as eL from '../Errors.js';
+import * as cL from '../Constants.js';
+import { JwtAsyncVerifier, JwtVerifier } from './Verifier.js';
+import { stringify } from '../CoreApis/Stringify.js';
+import { JwtAudienceValidator } from '../Validators/Audience.js';
 
 class TestSigner implements dL.IJwaSigner {
     public readonly family = cL.ESigningAlgoFamily.HMAC;

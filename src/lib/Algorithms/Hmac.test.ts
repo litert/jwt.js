@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeAssert from 'node:assert';
-import * as eL from '../Errors';
-import * as cL from '../Constants';
-import { HmacJwaSigner, HmacJwaVerifier } from './Hmac';
+import * as eL from '../Errors.js';
+import * as cL from '../Constants.js';
+import { HmacJwaSigner, HmacJwaVerifier } from './Hmac.js';
 
 NodeTest.describe('JWA HMAC', () => {
 

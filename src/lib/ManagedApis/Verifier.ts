@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import type * as dL from '../Types';
-import * as eL from '../Errors';
+import type * as dL from '../Types.js';
+import * as eL from '../Errors.js';
 import type * as uT from '@litert/utils-ts-types';
-import { parse } from '../CoreApis/Parse';
+import { parse } from '../CoreApis/Parse.js';
 
 /**
  * The options for JWT verifier.

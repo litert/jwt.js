@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import * as Jwt from '../lib';
-import { token } from './quick-start-builder';
+import * as Jwt from '../lib/index.js';
+import { token } from './quick-start-builder.js';
 
 const hmacVerifier = new Jwt.HmacJwaVerifier({
     key: 'hello-world',

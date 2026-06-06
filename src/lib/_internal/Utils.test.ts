@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeFS from 'node:fs';
 import * as NodeAssert from 'node:assert';
-import * as uL from './Utils';
+import * as uL from './Utils.js';
 
 NodeTest.describe('_internal/Utils', () => {
 
@@ -33,7 +33,7 @@ NodeTest.describe('_internal/Utils', () => {
         NodeAssert.throws(() => {
 
             uL.preparePrivateKey(NodeFS.readFileSync(
-                `${__dirname}/../../test-data/ok-RS256.pub.pem`,
+                `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
                 'utf-8',
             ));
 
@@ -43,14 +43,14 @@ NodeTest.describe('_internal/Utils', () => {
     NodeTest.it('"preparePrivateKey" should work with valid key', () => {
 
         uL.preparePrivateKey(NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
             'utf-8',
         ));
 
         uL.preparePrivateKey(
             NodeCrypto.createPrivateKey({
                 key: NodeFS.readFileSync(
-                    `${__dirname}/../../test-data/ok-RS256.p8.der`,
+                    `${import.meta.dirname}/../../test-data/ok-RS256.p8.der`,
                 ),
                 format: 'der',
                 type: 'pkcs8',
@@ -58,14 +58,14 @@ NodeTest.describe('_internal/Utils', () => {
         );
 
         uL.preparePrivateKey(NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-RS256.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p1.pem`,
             'utf-8',
         ));
 
         uL.preparePrivateKey(
             NodeCrypto.createPrivateKey({
                 key: NodeFS.readFileSync(
-                    `${__dirname}/../../test-data/ok-RS256.p1.der`,
+                    `${import.meta.dirname}/../../test-data/ok-RS256.p1.der`,
                 ),
                 format: 'der',
                 type: 'pkcs1',
@@ -85,26 +85,26 @@ NodeTest.describe('_internal/Utils', () => {
     NodeTest.it('"preparePublicKey" should work with valid key', () => {
 
         uL.preparePublicKey(NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-RS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
             'utf-8',
         ));
 
         // Private keys should also work for public key usage
 
         uL.preparePublicKey(NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
             'utf-8',
         ));
 
         uL.preparePublicKey(NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-RS256.p1.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p1.pem`,
             'utf-8',
         ));
 
         uL.preparePublicKey(
             NodeCrypto.createPublicKey({
                 key: NodeFS.readFileSync(
-                    `${__dirname}/../../test-data/ok-RS256.pub.der`,
+                    `${import.meta.dirname}/../../test-data/ok-RS256.pub.der`,
                 ),
                 format: 'der',
                 type: 'spki',

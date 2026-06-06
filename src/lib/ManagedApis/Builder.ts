@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 
 /* eslint-disable max-lines */
 
-import type * as dL from '../Types';
+import type * as dL from '../Types.js';
 import type * as uT from '@litert/utils-ts-types';
-import * as cL from '../Constants';
-import { stringify } from '../CoreApis/Stringify';
+import * as cL from '../Constants.js';
+import { stringify } from '../CoreApis/Stringify.js';
 
 /**
  * The options for creating a JWT builder.
@@ -134,7 +134,7 @@ export class JwtBuilder {
      *
      * @returns  The builder itself for chaining.
      */
-    public setHeaderClaim(name: string, value: uT.IJsonSafeValue, opts?: ISetHeaderClaimOptions): this {
+    public setHeaderClaim(name: string, value: dL.IJsonFieldValue, opts?: ISetHeaderClaimOptions): this {
 
         switch (name) {
             case cL.EStdHeaderClaim.ALGORITHM:
@@ -222,11 +222,11 @@ export class JwtBuilder {
      *
      * @returns       The builder itself for chaining.
      */
-    public setPayloadClaim(name: string, value: uT.IJsonSafeValue, opts?: ISetPayloadClaimOptions): this {
+    public setPayloadClaim(name: string, value: dL.IJsonFieldValue, opts?: ISetPayloadClaimOptions): this {
 
         if (true !== opts?.skipValidation) {
-
             switch (name) {
+
                 case cL.EStdPayloadClaim.EXPIRATION_TIME:
                 case cL.EStdPayloadClaim.NOT_BEFORE:
                 case cL.EStdPayloadClaim.ISSUED_AT:
@@ -376,7 +376,7 @@ export class JwtBuilder {
      *
      * @returns The builder itself for chaining.
      */
-    public setJwk(jwk: uT.IJsonSafeValue): this {
+    public setJwk(jwk: dL.IJsonFieldValue): this {
 
         return this.setHeaderClaim(cL.EStdHeaderClaim.JWK, jwk);
     }

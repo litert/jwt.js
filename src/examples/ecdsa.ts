@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as LibJwt from '../lib';
+import * as LibJwt from '../lib/index.js';
 import * as NodeFS from 'node:fs';
 
-const KEY_DIR = `${__dirname}/../test-data`;
+const KEY_DIR = `${import.meta.dirname}/../test-data`;
 
 for (const k of [
     'ES256',

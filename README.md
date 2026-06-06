@@ -57,7 +57,7 @@ npm i @litert/jwt --save
 
 ## Requirements
 
-- Node.js v18.x (Or newer)
+- Node.js v20.x (Or newer)
 - TypeScript v5.1.x (Or newer)
 
 ## Documents

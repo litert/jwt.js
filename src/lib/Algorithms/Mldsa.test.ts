@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ import * as NodeTest from 'node:test';
 import * as NodeCrypto from 'node:crypto';
 import * as NodeFS from 'node:fs';
 import * as NodeAssert from 'node:assert';
-import * as eL from '../Errors';
-import { MldsaJwaSigner, MldsaJwaVerifier } from './Mldsa';
+import * as eL from '../Errors.js';
+import { MldsaJwaSigner, MldsaJwaVerifier } from './Mldsa.js';
 
 NodeTest.describe('JWA ML-DSA', () => {
 
@@ -28,11 +28,11 @@ NodeTest.describe('JWA ML-DSA', () => {
         const jwaName = alg.toUpperCase();
 
         const privKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.p8.pem`,
             'utf-8',
         );
         const pubKey = NodeFS.readFileSync(
-            `${__dirname}/../../test-data/ok-${alg}.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-${alg}.pub.pem`,
             'utf-8',
         );
 
@@ -185,14 +185,14 @@ NodeTest.describe('JWA ML-DSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-RS512.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS256.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS384.p8.pem`,
-            `${__dirname}/../../test-data/ok-PS512.p8.pem`,
-            `${__dirname}/../../test-data/ok-ed25519.p8.pem`,
-            `${__dirname}/../../test-data/ok-ed448.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed25519.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed448.p8.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -207,15 +207,15 @@ NodeTest.describe('JWA ML-DSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-RS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-RS512.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS256.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS384.pub.pem`,
-            `${__dirname}/../../test-data/ok-PS512.pub.pem`,
-            `${__dirname}/../../test-data/ok-x25519.p8.pem`,
-            `${__dirname}/../../test-data/ok-ed25519.pub.pem`,
-            `${__dirname}/../../test-data/ok-ed448.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-RS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS256.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS384.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-PS512.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-x25519.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed25519.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ed448.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -230,9 +230,9 @@ NodeTest.describe('JWA ML-DSA', () => {
         }
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`,
-            `${__dirname}/../../test-data/ok-ML-DSA-65.pub.pem`,
-            `${__dirname}/../../test-data/ok-ML-DSA-87.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-44.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-65.pub.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-87.pub.pem`,
         ]) {
 
             NodeAssert.throws(() => {
@@ -248,9 +248,9 @@ NodeTest.describe('JWA ML-DSA', () => {
 
 
         for (const badKey of [
-            `${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`,
-            `${__dirname}/../../test-data/ok-ML-DSA-65.p8.pem`,
-            `${__dirname}/../../test-data/ok-ML-DSA-87.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-44.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-65.p8.pem`,
+            `${import.meta.dirname}/../../test-data/ok-ML-DSA-87.p8.pem`,
         ]) {
 
             NodeAssert.doesNotThrow(() => {
@@ -267,7 +267,7 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaSigner({
-                privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
+                privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
             }).sign(true as any);
         }, {
             name: 'sign_failed',
@@ -280,13 +280,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: true as any,
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-44.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -300,13 +300,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/err-ML-DSA-44.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/err-ML-DSA-44.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {
@@ -317,13 +317,13 @@ NodeTest.describe('JWA ML-DSA', () => {
         NodeAssert.throws(() => {
 
             new MldsaJwaVerifier({
-                publicKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
+                publicKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-44.pub.pem`, 'utf-8'),
             }).validate({
                 header: { 'alg': 'ML-DSA-44' },
                 payload: { data: 'test' },
                 signedContent: 'test-signature',
                 signature: new MldsaJwaSigner({
-                    privateKey: NodeFS.readFileSync(`${__dirname}/../../test-data/ok-ML-DSA-65.p8.pem`, 'utf-8'),
+                    privateKey: NodeFS.readFileSync(`${import.meta.dirname}/../../test-data/ok-ML-DSA-65.p8.pem`, 'utf-8'),
                 }).sign('test-signature'),
             });
         }, {

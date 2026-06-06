@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-export * from './CoreApis/Stringify';
-export * from './CoreApis/Parse';
-export * from './Constants';
-export type * from './Types';
-export * as Errors from './Errors';
-export * from './Algorithms/Hmac';
-export * from './Algorithms/Ecdsa';
-export * from './Algorithms/Eddsa';
-export * from './Algorithms/Mldsa';
-export * from './Algorithms/Rsa';
-export * from './Validators/Audience';
-export * from './Validators/Issuer';
-export * from './Validators/Subject';
-export * from './Validators/TimeValidity';
-export * from './ManagedApis/Builder';
-export * from './ManagedApis/Verifier';
+export * from './CoreApis/Stringify.js';
+export * from './CoreApis/Parse.js';
+export * from './Constants.js';
+export type * from './Types.js';
+export * as Errors from './Errors.js';
+export * from './Algorithms/Hmac.js';
+export * from './Algorithms/Ecdsa.js';
+export * from './Algorithms/Eddsa.js';
+export * from './Algorithms/Mldsa.js';
+export * from './Algorithms/Rsa.js';
+export * from './Validators/Audience.js';
+export * from './Validators/Issuer.js';
+export * from './Validators/Subject.js';
+export * from './Validators/TimeValidity.js';
+export * from './ManagedApis/Builder.js';
+export * from './ManagedApis/Verifier.js';

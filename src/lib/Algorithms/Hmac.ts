@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ * Copyright 2026 Angus.Fenying <fenying@litert.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 
 import * as NodeCrypto from 'node:crypto';
-import * as cL from '../Constants';
-import * as eL from '../Errors';
-import type * as dL from '../Types';
+import * as cL from '../Constants.js';
+import * as eL from '../Errors.js';
+import type * as dL from '../Types.js';
 
 /**
  * The options for creating an HMAC JWT signer.
