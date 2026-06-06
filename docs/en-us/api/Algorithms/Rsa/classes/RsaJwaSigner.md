@@ -103,7 +103,7 @@ The signing algorithm to use, for the `alg` claim in the JWT header.
 
 ### keyId?
 
-> `readonly` `optional` **keyId**: `string` \| `null`
+> `readonly` `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:199](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L199)
 
@@ -127,7 +127,7 @@ Sign the provided data and return the signature.
 
 ##### content
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` \| `Buffer`\<`ArrayBufferLike`\>
 
 #### Returns
 

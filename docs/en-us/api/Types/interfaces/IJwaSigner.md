@@ -2,7 +2,7 @@
 
 # Interface: IJwaSigner
 
-Defined in: [src/lib/Types.ts:349](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L349)
+Defined in: [src/lib/Types.ts:357](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L357)
 
 The type of the signer objects used in `stringify` API, to sign the JWTs.
 
@@ -12,7 +12,7 @@ The type of the signer objects used in `stringify` API, to sign the JWTs.
 
 > `readonly` **digestType**: [`EDigestType`](../../Constants/enumerations/EDigestType.md)
 
-Defined in: [src/lib/Types.ts:368](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L368)
+Defined in: [src/lib/Types.ts:376](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L376)
 
 The digest type to use for signing.
 
@@ -22,7 +22,7 @@ The digest type to use for signing.
 
 > `readonly` **family**: [`ESigningAlgoFamily`](../../Constants/enumerations/ESigningAlgoFamily.md)
 
-Defined in: [src/lib/Types.ts:353](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L353)
+Defined in: [src/lib/Types.ts:361](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L361)
 
 The signing algorithm family.
 
@@ -32,7 +32,7 @@ The signing algorithm family.
 
 > `readonly` **jwa**: [`ESigningJwa`](../../Constants/enumerations/ESigningJwa.md)
 
-Defined in: [src/lib/Types.ts:363](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L363)
+Defined in: [src/lib/Types.ts:371](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L371)
 
 The signing algorithm to use, for the `alg` claim in the JWT header.
 
@@ -40,9 +40,9 @@ The signing algorithm to use, for the `alg` claim in the JWT header.
 
 ### keyId?
 
-> `readonly` `optional` **keyId**: `string` \| `null`
+> `readonly` `optional` **keyId?**: `string` \| `null`
 
-Defined in: [src/lib/Types.ts:358](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L358)
+Defined in: [src/lib/Types.ts:366](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L366)
 
 The key ID to use in the JWT header.
 
@@ -52,7 +52,7 @@ The key ID to use in the JWT header.
 
 > **sign**(`data`): `Buffer`
 
-Defined in: [src/lib/Types.ts:377](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L377)
+Defined in: [src/lib/Types.ts:385](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L385)
 
 Sign the provided data and return the signature.
 
@@ -60,9 +60,9 @@ Sign the provided data and return the signature.
 
 ##### data
 
-The data to sign.
+`string` \| `Buffer`\<`ArrayBufferLike`\>
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+The data to sign.
 
 #### Returns
 

@@ -10,7 +10,7 @@ The options for `JwtSubjectValidator`.
 
 ### allowlist
 
-> **allowlist**: (`string` \| `RegExp` \| (`v`) => `boolean`)[]
+> **allowlist**: (`string` \| `RegExp` \| ((`v`) => `boolean`))[]
 
 Defined in: [src/lib/Validators/Subject.ts:35](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Subject.ts#L35)
 
@@ -25,7 +25,7 @@ The allowlist of subjects, the elements can be:
 
 ### claimRequired?
 
-> `optional` **claimRequired**: `boolean`
+> `optional` **claimRequired?**: `boolean`
 
 Defined in: [src/lib/Validators/Subject.ts:42](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Subject.ts#L42)
 
@@ -41,7 +41,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Validators/Subject.ts:49](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Subject.ts#L49)
 

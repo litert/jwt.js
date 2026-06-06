@@ -10,7 +10,7 @@ The options for creating an ECDSA JWT signer.
 
 ### keyId?
 
-> `optional` **keyId**: `string` \| `null`
+> `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Ecdsa.ts:47](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Ecdsa.ts#L47)
 

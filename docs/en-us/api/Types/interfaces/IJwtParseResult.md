@@ -2,7 +2,7 @@
 
 # Interface: IJwtParseResult
 
-Defined in: [src/lib/Types.ts:383](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L383)
+Defined in: [src/lib/Types.ts:391](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L391)
 
 The type of the result returned by `parse` API.
 
@@ -12,7 +12,7 @@ The type of the result returned by `parse` API.
 
 > **header**: [`IJwtHeader`](IJwtHeader.md)
 
-Defined in: [src/lib/Types.ts:388](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L388)
+Defined in: [src/lib/Types.ts:396](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L396)
 
 The decoded header of the JWT.
 
@@ -22,7 +22,7 @@ The decoded header of the JWT.
 
 > **payload**: [`IJwtPayload`](IJwtPayload.md)
 
-Defined in: [src/lib/Types.ts:393](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L393)
+Defined in: [src/lib/Types.ts:401](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L401)
 
 The decoded payload of the JWT.
 
@@ -32,7 +32,7 @@ The decoded payload of the JWT.
 
 > **signature**: `Buffer`
 
-Defined in: [src/lib/Types.ts:403](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L403)
+Defined in: [src/lib/Types.ts:411](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L411)
 
 The signature of the JWT.
 
@@ -42,6 +42,6 @@ The signature of the JWT.
 
 > **signedContent**: `string`
 
-Defined in: [src/lib/Types.ts:398](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L398)
+Defined in: [src/lib/Types.ts:406](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L406)
 
 The content to be signed, which is the base64url-encoded header and payload.

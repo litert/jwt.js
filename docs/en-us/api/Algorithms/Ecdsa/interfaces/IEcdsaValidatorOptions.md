@@ -10,7 +10,7 @@ The options for creating an ECDSA signature validator for JWT.
 
 ### checkAlgClaim?
 
-> `optional` **checkAlgClaim**: `boolean`
+> `optional` **checkAlgClaim?**: `boolean`
 
 Defined in: [src/lib/Algorithms/Ecdsa.ts:183](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Ecdsa.ts#L183)
 
@@ -26,7 +26,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Algorithms/Ecdsa.ts:167](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Ecdsa.ts#L167)
 

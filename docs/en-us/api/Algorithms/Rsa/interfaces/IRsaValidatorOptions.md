@@ -10,7 +10,7 @@ The options for creating an RSA signature validator for JWT.
 
 ### checkAlgClaim?
 
-> `optional` **checkAlgClaim**: `boolean`
+> `optional` **checkAlgClaim?**: `boolean`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:256](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L256)
 
@@ -26,7 +26,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:244](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L244)
 
@@ -62,7 +62,7 @@ The public key to use for RSA signature verification.
 
 ### usePssPadding?
 
-> `optional` **usePssPadding**: `boolean` \| `null`
+> `optional` **usePssPadding?**: `boolean` \| `null`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:273](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L273)
 

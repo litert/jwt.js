@@ -10,7 +10,7 @@ The options for `JwtAudienceValidator`.
 
 ### allowlist
 
-> **allowlist**: (`string` \| `RegExp` \| (`v`) => `boolean`)[]
+> **allowlist**: (`string` \| `RegExp` \| ((`v`) => `boolean`))[]
 
 Defined in: [src/lib/Validators/Audience.ts:35](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Audience.ts#L35)
 
@@ -25,7 +25,7 @@ The allowlist of audiences, the elements can be:
 
 ### claimRequired?
 
-> `optional` **claimRequired**: `boolean`
+> `optional` **claimRequired?**: `boolean`
 
 Defined in: [src/lib/Validators/Audience.ts:42](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Audience.ts#L42)
 
@@ -41,7 +41,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Validators/Audience.ts:49](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Audience.ts#L49)
 

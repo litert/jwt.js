@@ -2,13 +2,13 @@
 
 # Interface: IJwtPayload
 
-Defined in: [src/lib/Types.ts:231](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L231)
+Defined in: [src/lib/Types.ts:239](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L239)
 
 The structure of JWT Payload.
 
 ## Indexable
 
-\[`key`: `string`\]: `IJsonSafeValue` \| `undefined`
+> \[`key`: `string`\]: [`IJsonFieldValue`](../type-aliases/IJsonFieldValue.md) \| `undefined`
 
 Other claims.
 
@@ -16,9 +16,9 @@ Other claims.
 
 ### aud?
 
-> `optional` **aud**: `string` \| `string`[]
+> `optional` **aud?**: `string` \| `string`[]
 
-Defined in: [src/lib/Types.ts:278](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L278)
+Defined in: [src/lib/Types.ts:286](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L286)
 
 The "aud" (audience) claim identifies the recipients that the JWT is
 intended for.  Each principal intended to process the JWT MUST
@@ -42,9 +42,9 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.3
 
 ### exp?
 
-> `optional` **exp**: `number`
+> `optional` **exp?**: `number`
 
-Defined in: [src/lib/Types.ts:322](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L322)
+Defined in: [src/lib/Types.ts:330](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L330)
 
 The "exp" (expiration time) claim identifies the expiration time on
 or after which the JWT MUST NOT be accepted for processing.  The
@@ -72,9 +72,9 @@ seconds
 
 ### iat?
 
-> `optional` **iat**: `number`
+> `optional` **iat?**: `number`
 
-Defined in: [src/lib/Types.ts:305](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L305)
+Defined in: [src/lib/Types.ts:313](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L313)
 
 The "iat" (issued at) claim identifies the time at which the JWT was
 issued.  This claim can be used to determine the age of the JWT.  Its
@@ -95,9 +95,9 @@ seconds
 
 ### iss?
 
-> `optional` **iss**: `string`
+> `optional` **iss?**: `string`
 
-Defined in: [src/lib/Types.ts:259](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L259)
+Defined in: [src/lib/Types.ts:267](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L267)
 
 The "iss" (issuer) claim identifies the principal that issued the
 JWT.  The processing of this claim is generally application specific.
@@ -114,9 +114,9 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1
 
 ### jti?
 
-> `optional` **jti**: `string`
+> `optional` **jti?**: `string`
 
-Defined in: [src/lib/Types.ts:247](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L247)
+Defined in: [src/lib/Types.ts:255](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L255)
 
 The "jti" (JWT ID) claim provides a unique identifier for the JWT.
 The identifier value MUST be assigned in a manner that ensures that
@@ -139,9 +139,9 @@ if you need to prevent replay or control its usage and validity by extra ways
 
 ### nbf?
 
-> `optional` **nbf**: `number`
+> `optional` **nbf?**: `number`
 
-Defined in: [src/lib/Types.ts:338](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L338)
+Defined in: [src/lib/Types.ts:346](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L346)
 
 The "nbf" (not before) claim identifies the time before which the JWT
 MUST NOT be accepted for processing.  The processing of the "nbf"
@@ -165,9 +165,9 @@ seconds
 
 ### sub?
 
-> `optional` **sub**: `string`
+> `optional` **sub?**: `string`
 
-Defined in: [src/lib/Types.ts:292](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L292)
+Defined in: [src/lib/Types.ts:300](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L300)
 
 The "sub" (subject) claim identifies the principal that is the
 subject of the JWT.  The claims in a JWT are normally statements

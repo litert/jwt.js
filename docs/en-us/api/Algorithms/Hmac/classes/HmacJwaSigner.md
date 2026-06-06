@@ -89,7 +89,7 @@ The signing algorithm to use, for the `alg` claim in the JWT header.
 
 ### keyId?
 
-> `readonly` `optional` **keyId**: `string` \| `null`
+> `readonly` `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Hmac.ts:95](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L95)
 
@@ -113,7 +113,7 @@ Sign the provided data and return the signature.
 
 ##### content
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` \| `Buffer`\<`ArrayBufferLike`\>
 
 #### Returns
 

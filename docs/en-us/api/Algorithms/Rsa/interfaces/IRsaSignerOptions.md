@@ -20,7 +20,7 @@ The digest type to use for signing.
 
 ### keyId?
 
-> `optional` **keyId**: `string` \| `null`
+> `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:42](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L42)
 
@@ -46,7 +46,7 @@ The private key to use for signing.
 
 ### usePssPadding?
 
-> `optional` **usePssPadding**: `boolean` \| `null`
+> `optional` **usePssPadding?**: `boolean` \| `null`
 
 Defined in: [src/lib/Algorithms/Rsa.ts:59](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Rsa.ts#L59)
 

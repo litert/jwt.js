@@ -2,7 +2,7 @@
 
 # Interface: IJwtAsyncValidator
 
-Defined in: [src/lib/Types.ts:438](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L438)
+Defined in: [src/lib/Types.ts:446](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L446)
 
 The type of the asynchronous validator objects that validate the JWTs, after parsing.
 
@@ -15,7 +15,7 @@ checks on the payload, such as expiration, audience, issuer, etc.
 
 > `readonly` **name**: `string`
 
-Defined in: [src/lib/Types.ts:440](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L440)
+Defined in: [src/lib/Types.ts:448](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L448)
 
 ## Methods
 
@@ -23,7 +23,7 @@ Defined in: [src/lib/Types.ts:440](https://github.com/litert/jwt.js/blob/master/
 
 > **validate**(`parseResult`): `Promise`\<`void`\>
 
-Defined in: [src/lib/Types.ts:449](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L449)
+Defined in: [src/lib/Types.ts:457](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L457)
 
 Validate the provided parse result of a JWT, checking if the JWT is valid.
 

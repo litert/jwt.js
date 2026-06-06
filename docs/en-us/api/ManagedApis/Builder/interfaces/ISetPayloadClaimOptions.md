@@ -10,7 +10,7 @@ The type of options for setting payload claims.
 
 ### skipValidation?
 
-> `optional` **skipValidation**: `boolean`
+> `optional` **skipValidation?**: `boolean`
 
 Defined in: [src/lib/ManagedApis/Builder.ts:97](https://github.com/litert/jwt.js/blob/master/src/lib/ManagedApis/Builder.ts#L97)
 

@@ -124,6 +124,12 @@ Re-exports [IIssuerValidationOptions](../Validators/Issuer/interfaces/IIssuerVal
 
 ***
 
+### IJsonFieldValue
+
+Re-exports [IJsonFieldValue](../Types/type-aliases/IJsonFieldValue.md)
+
+***
+
 ### IJwaSigner
 
 Re-exports [IJwaSigner](../Types/interfaces/IJwaSigner.md)

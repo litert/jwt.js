@@ -10,7 +10,7 @@ The options for creating a JWT builder.
 
 ### header?
 
-> `optional` **header**: `Partial`\<[`IJwtHeader`](../../../Types/interfaces/IJwtHeader.md)\>
+> `optional` **header?**: `Partial`\<[`IJwtHeader`](../../../Types/interfaces/IJwtHeader.md)\>
 
 Defined in: [src/lib/ManagedApis/Builder.ts:45](https://github.com/litert/jwt.js/blob/master/src/lib/ManagedApis/Builder.ts#L45)
 
@@ -32,7 +32,7 @@ claims for the builder.
 
 ### payload?
 
-> `optional` **payload**: [`IJwtPayload`](../../../Types/interfaces/IJwtPayload.md)
+> `optional` **payload?**: [`IJwtPayload`](../../../Types/interfaces/IJwtPayload.md)
 
 Defined in: [src/lib/ManagedApis/Builder.ts:55](https://github.com/litert/jwt.js/blob/master/src/lib/ManagedApis/Builder.ts#L55)
 

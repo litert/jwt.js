@@ -10,7 +10,7 @@ The type of options for setting header claims.
 
 ### critical?
 
-> `optional` **critical**: `boolean`
+> `optional` **critical?**: `boolean`
 
 Defined in: [src/lib/ManagedApis/Builder.ts:77](https://github.com/litert/jwt.js/blob/master/src/lib/ManagedApis/Builder.ts#L77)
 
@@ -26,7 +26,7 @@ false
 
 ### skipValidation?
 
-> `optional` **skipValidation**: `boolean`
+> `optional` **skipValidation?**: `boolean`
 
 Defined in: [src/lib/ManagedApis/Builder.ts:84](https://github.com/litert/jwt.js/blob/master/src/lib/ManagedApis/Builder.ts#L84)
 

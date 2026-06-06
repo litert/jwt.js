@@ -2,13 +2,13 @@
 
 # Interface: IJwtHeader
 
-Defined in: [src/lib/Types.ts:23](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L23)
+Defined in: [src/lib/Types.ts:31](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L31)
 
 The structure of JWT Header.
 
 ## Indexable
 
-\[`key`: `string`\]: `IJsonSafeValue` \| `undefined`
+> \[`key`: `string`\]: [`IJsonFieldValue`](../type-aliases/IJsonFieldValue.md) \| `undefined`
 
 Other claims.
 
@@ -18,7 +18,7 @@ Other claims.
 
 > **alg**: `"RS256"` \| `"RS384"` \| `"RS512"` \| `"PS256"` \| `"PS384"` \| `"PS512"` \| `"HS256"` \| `"HS384"` \| `"HS512"` \| `"ES256"` \| `"ES256K"` \| `"ES384"` \| `"ES512"` \| `"EdDSA"` \| `"ML-DSA-44"` \| `"ML-DSA-65"` \| `"ML-DSA-87"`
 
-Defined in: [src/lib/Types.ts:46](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L46)
+Defined in: [src/lib/Types.ts:54](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L54)
 
 The "alg" (algorithm) Header Parameter identifies the cryptographic
 algorithm used to secure the JWS.  The JWS Signature value is not
@@ -47,9 +47,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.1
 
 ### crit?
 
-> `optional` **crit**: `string`[]
+> `optional` **crit?**: `string`[]
 
-Defined in: [src/lib/Types.ts:215](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L215)
+Defined in: [src/lib/Types.ts:223](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L223)
 
 The "crit" (critical) Header Parameter indicates that extensions to
 this specification and/or [JWA] are being used that MUST be
@@ -79,9 +79,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11
 
 ### cty?
 
-> `optional` **cty**: `"JWT"`
+> `optional` **cty?**: `"JWT"`
 
-Defined in: [src/lib/Types.ts:106](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L106)
+Defined in: [src/lib/Types.ts:114](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L114)
 
 The "cty" (content type) Header Parameter defined by [JWS] and [JWE]
 is used by this specification to convey structural information about
@@ -97,9 +97,9 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-5.2
 
 ### jku?
 
-> `optional` **jku**: `string`
+> `optional` **jku?**: `string`
 
-Defined in: [src/lib/Types.ts:85](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L85)
+Defined in: [src/lib/Types.ts:93](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L93)
 
 The "jku" (JWK Set URL) Header Parameter is a URI [RFC3986] that
 refers to a resource for a set of JSON-encoded public keys, one of
@@ -122,9 +122,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.2
 
 ### jwk?
 
-> `optional` **jwk**: `string`
+> `optional` **jwk?**: `string`
 
-Defined in: [src/lib/Types.ts:96](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L96)
+Defined in: [src/lib/Types.ts:104](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L104)
 
 The "jwk" (JSON Web Key) Header Parameter is the public key that
 corresponds to the key used to digitally sign the JWS.  This key is
@@ -141,9 +141,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3
 
 ### kid?
 
-> `optional` **kid**: `string`
+> `optional` **kid?**: `string`
 
-Defined in: [src/lib/Types.ts:191](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L191)
+Defined in: [src/lib/Types.ts:199](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L199)
 
 The "kid" (key ID) Header Parameter is a hint indicating which key
 was used to secure the JWS.  This parameter allows originators to
@@ -164,9 +164,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.4
 
 ### typ?
 
-> `optional` **typ**: `"JWT"`
+> `optional` **typ?**: `"JWT"`
 
-Defined in: [src/lib/Types.ts:68](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L68)
+Defined in: [src/lib/Types.ts:76](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L76)
 
 The "typ" (type) Header Parameter defined by JWS and JWE is used
 by JWT applications to declare the media type IANA.MediaTypes of
@@ -195,9 +195,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.9
 
 ### x5c?
 
-> `optional` **x5c**: `string`[]
+> `optional` **x5c?**: `string`[]
 
-Defined in: [src/lib/Types.ts:153](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L153)
+Defined in: [src/lib/Types.ts:161](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L161)
 
 The "x5c" (X.509 certificate chain) Header Parameter contains the
 X.509 public key certificate or certificate chain [RFC5280]
@@ -224,9 +224,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6
 
 ### x5t?
 
-> `optional` **x5t**: `string`
+> `optional` **x5t?**: `string`
 
-Defined in: [src/lib/Types.ts:119](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L119)
+Defined in: [src/lib/Types.ts:127](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L127)
 
 The "x5t" (X.509 certificate SHA-1 thumbprint) Header Parameter is a
 base64url-encoded SHA-1 thumbprint (a.k.a. digest) of the DER
@@ -245,9 +245,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.7
 
 ### x5t#S256?
 
-> `optional` **x5t#S256**: `string`
+> `optional` **x5t#S256?**: `string`
 
-Defined in: [src/lib/Types.ts:132](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L132)
+Defined in: [src/lib/Types.ts:140](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L140)
 
 The "x5t#S256" (X.509 certificate SHA-256 thumbprint) Header
 Parameter is a base64url-encoded SHA-256 thumbprint (a.k.a. digest)
@@ -266,9 +266,9 @@ https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.8
 
 ### x5u?
 
-> `optional` **x5u**: `string`
+> `optional` **x5u?**: `string`
 
-Defined in: [src/lib/Types.ts:176](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L176)
+Defined in: [src/lib/Types.ts:184](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L184)
 
 The "x5u" (X.509 URL) Header Parameter is a URI [RFC3986] that refers
 to a resource for the X.509 public key certificate or certificate

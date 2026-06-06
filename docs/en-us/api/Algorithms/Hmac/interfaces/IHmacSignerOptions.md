@@ -37,7 +37,7 @@ Use at least 256-bit (32 bytes) key for HMAC-SHA256,
 
 ### keyId?
 
-> `optional` **keyId**: `string` \| `null`
+> `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Hmac.ts:51](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Hmac.ts#L51)
 

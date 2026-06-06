@@ -10,7 +10,7 @@ The options for `JwtIssuerValidator`.
 
 ### allowlist
 
-> **allowlist**: (`string` \| `RegExp` \| (`iss`) => `boolean`)[]
+> **allowlist**: (`string` \| `RegExp` \| ((`iss`) => `boolean`))[]
 
 Defined in: [src/lib/Validators/Issuer.ts:35](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Issuer.ts#L35)
 
@@ -25,7 +25,7 @@ The allowlist of issuers, the elements can be:
 
 ### claimRequired?
 
-> `optional` **claimRequired**: `boolean`
+> `optional` **claimRequired?**: `boolean`
 
 Defined in: [src/lib/Validators/Issuer.ts:42](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Issuer.ts#L42)
 
@@ -41,7 +41,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Validators/Issuer.ts:49](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/Issuer.ts#L49)
 

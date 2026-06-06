@@ -10,7 +10,7 @@ The options for creating an ML-DSA signature validator for JWT.
 
 ### checkAlgClaim?
 
-> `optional` **checkAlgClaim**: `boolean`
+> `optional` **checkAlgClaim?**: `boolean`
 
 Defined in: [src/lib/Algorithms/Mldsa.ts:162](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Mldsa.ts#L162)
 
@@ -26,7 +26,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Algorithms/Mldsa.ts:149](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Mldsa.ts#L149)
 

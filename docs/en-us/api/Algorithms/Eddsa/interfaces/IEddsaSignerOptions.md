@@ -10,7 +10,7 @@ The options for creating an EdDSA JWT signer.
 
 ### keyId?
 
-> `optional` **keyId**: `string` \| `null`
+> `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Eddsa.ts:43](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L43)
 

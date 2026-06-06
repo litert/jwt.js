@@ -10,7 +10,7 @@ The options for creating an EdDSA signature validator for JWT.
 
 ### checkAlgClaim?
 
-> `optional` **checkAlgClaim**: `boolean`
+> `optional` **checkAlgClaim?**: `boolean`
 
 Defined in: [src/lib/Algorithms/Eddsa.ts:160](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L160)
 
@@ -26,7 +26,7 @@ true
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Algorithms/Eddsa.ts:147](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Eddsa.ts#L147)
 

@@ -10,7 +10,7 @@ The options for creating an ML-DSA JWT signer.
 
 ### keyId?
 
-> `optional` **keyId**: `string` \| `null`
+> `optional` **keyId?**: `string` \| `null`
 
 Defined in: [src/lib/Algorithms/Mldsa.ts:43](https://github.com/litert/jwt.js/blob/master/src/lib/Algorithms/Mldsa.ts#L43)
 

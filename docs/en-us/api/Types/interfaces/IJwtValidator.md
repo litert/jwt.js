@@ -2,7 +2,7 @@
 
 # Interface: IJwtValidator
 
-Defined in: [src/lib/Types.ts:412](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L412)
+Defined in: [src/lib/Types.ts:420](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L420)
 
 The type of the validator objects that validate the JWTs, after parsing.
 
@@ -15,7 +15,7 @@ checks on the payload, such as expiration, audience, issuer, etc.
 
 > `readonly` **name**: `string`
 
-Defined in: [src/lib/Types.ts:420](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L420)
+Defined in: [src/lib/Types.ts:428](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L428)
 
 The name of the validator.
 
@@ -28,7 +28,7 @@ which validator failed.
 
 > **validate**(`parseResult`): `void`
 
-Defined in: [src/lib/Types.ts:429](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L429)
+Defined in: [src/lib/Types.ts:437](https://github.com/litert/jwt.js/blob/master/src/lib/Types.ts#L437)
 
 Validate the provided parse result of a JWT, checking if the JWT is valid.
 

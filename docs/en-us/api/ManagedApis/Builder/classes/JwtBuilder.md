@@ -82,9 +82,9 @@ Set the audience (`aud`) payload claim.
 
 ##### aud
 
-The audience (string or string array).
+`string` \| `string`[]
 
-`string` | `string`[]
+The audience (string or string array).
 
 #### Returns
 
@@ -138,9 +138,9 @@ Set the expiration time (`exp`) payload claim.
 
 ##### exp
 
-The expiration time (unix timestamp in seconds or Date object).
+`number` \| `Date`
 
-`number` | `Date`
+The expiration time (unix timestamp in seconds or Date object).
 
 #### Returns
 
@@ -181,7 +181,7 @@ The name of the header claim.
 
 ##### value
 
-`IJsonSafeValue`
+[`IJsonFieldValue`](../../../Types/type-aliases/IJsonFieldValue.md)
 
 The value of the header claim.
 
@@ -211,9 +211,9 @@ Set the issued at (`iat`) payload claim.
 
 ##### iat
 
-The issued at time (unix timestamp in seconds or Date object).
+`number` \| `Date`
 
-`number` | `Date`
+The issued at time (unix timestamp in seconds or Date object).
 
 #### Returns
 
@@ -267,7 +267,7 @@ Set the JWK (`jwk`) header claim.
 
 ##### jwk
 
-`IJsonSafeValue`
+[`IJsonFieldValue`](../../../Types/type-aliases/IJsonFieldValue.md)
 
 The JWK.
 
@@ -379,9 +379,9 @@ Set the not before (`nbf`) payload claim.
 
 ##### nbf
 
-The not before time (unix timestamp in seconds or Date object).
+`number` \| `Date`
 
-`number` | `Date`
+The not before time (unix timestamp in seconds or Date object).
 
 #### Returns
 
@@ -417,7 +417,7 @@ The name of the payload claim.
 
 ##### value
 
-`IJsonSafeValue`
+[`IJsonFieldValue`](../../../Types/type-aliases/IJsonFieldValue.md)
 
 The value of the payload claim.
 

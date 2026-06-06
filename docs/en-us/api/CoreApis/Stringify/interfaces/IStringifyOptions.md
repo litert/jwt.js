@@ -10,7 +10,7 @@ The options for API `stringify`.
 
 ### header?
 
-> `optional` **header**: `Partial`\<[`IJwtHeader`](../../../Types/interfaces/IJwtHeader.md)\>
+> `optional` **header?**: `Partial`\<[`IJwtHeader`](../../../Types/interfaces/IJwtHeader.md)\>
 
 Defined in: [src/lib/CoreApis/Stringify.ts:32](https://github.com/litert/jwt.js/blob/master/src/lib/CoreApis/Stringify.ts#L32)
 

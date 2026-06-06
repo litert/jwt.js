@@ -10,7 +10,7 @@ The options for the time validity validator.
 
 ### claims?
 
-> `optional` **claims**: `Partial`\<`Record`\<[`EXPIRATION_TIME`](../../../Constants/enumerations/EStdPayloadClaim.md#expiration_time) \| [`NOT_BEFORE`](../../../Constants/enumerations/EStdPayloadClaim.md#not_before), `IClaimOptions`\>\>
+> `optional` **claims?**: `Partial`\<`Record`\<[`EXPIRATION_TIME`](../../../Constants/enumerations/EStdPayloadClaim.md#expiration_time) \| [`NOT_BEFORE`](../../../Constants/enumerations/EStdPayloadClaim.md#not_before), `IClaimOptions`\>\>
 
 Defined in: [src/lib/Validators/TimeValidity.ts:55](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/TimeValidity.ts#L55)
 
@@ -22,7 +22,7 @@ The "nbf" claim is not checked by default.
 
 ### customName?
 
-> `optional` **customName**: `string`
+> `optional` **customName?**: `string`
 
 Defined in: [src/lib/Validators/TimeValidity.ts:48](https://github.com/litert/jwt.js/blob/master/src/lib/Validators/TimeValidity.ts#L48)
 
